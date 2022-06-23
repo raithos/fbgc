@@ -3633,46 +3633,14 @@ exportObj.translations.English =
             "Your #{translator('faction', faction)} Squads"
         reallyDeleteSquadXY: (translator, squadname) -> 
             "Really delete #{squadname}?"
-        "No saved squads": "Nothing to see here. Go save a squad!"
-        "name required": "A name is required"
-        "Name in use": "You already have a squad with that name"
-        "select OAuth provider": "Select one of the OAuth providers below to log in and start saving squads."
-        "OAuth explanation" : """
-                    <p>
-                        <a href="http://en.wikipedia.org/wiki/OAuth" target="_blank">OAuth</a> is an authorization system which lets you prove your identity at a web site without having to create a new account.  Instead, you tell some provider with whom you already have an account (e.g. Google or Facebook) to prove to this web site that you say who you are.  That way, the next time you visit, this site remembers that you're that user from Google.
-                    </p>
-                    <p>
-                        The best part about this is that you don't have to come up with a new username and password to remember.  And don't worry, I'm not collecting any data from the providers about you.  I've tried to set the scope of data to be as small as possible, but some places send a bunch of data at minimum.  I throw it away.  All I look at is a unique identifier (usually some giant number).
-                    </p>
-                    <p>
-                        For more information, check out this <a href="http://hueniverse.com/oauth/guide/intro/" target="_blank">introduction to OAuth</a>.
-                    </p>
-                    """
-        "Intro Card YASB": """
-                    <h2>YASB for X-Wing 2.5</h2>
-                    <p>YASB (Yet Another Squad Builder) is a simple, fast, squad builder for X-Wing Miniatures by <a href="https://www.atomicmassgames.com/">Atomic Mass Games</a>.</p>
-                    <p>Current Version: 06/15/2022</p>
-                    <h5>Credits</h5>
-                    <p>Built upon the amazing original <a href="https://geordanr.github.io/xwing/">Yet Another Squad Builder</a>.</p>
-                    <p>YASB is updated and maintained by Stephen Kim.</p>
-                    <p>Additional credits to:<br>
-                    2.5 Update Data: Devon Monkhouse, Perry Low, Andrew Oehler.<br>
-                    2.0 launch data: Evan Cameron, Jonathan Hon, Devon Monkhouse, and Mark Stewart.<br>
-                    Translation Team: Patrick Mischke, godgremos, Clément Bourgoin, ManuelWittke, kksuke<br>
-                    Site logo: Thomas Kohler<br>
-                    Quick Build Support: Patrick Mischke</p>
-
-                    <p>This builder is unofficial and is not affiliated with Atomic Mass Games, Lucasfilm Ltd., or Disney.</p>
-
-                    <p>This site will always be free, and always 100% available for all people to use. However, if you want to donate, a button is prepared for you.</p>
-                    <p><button class="btn btn-primary paypal" onclick="window.open('https://paypal.me/raithos');">Donate</button></p>
-        """
-        "Continue to OAuth provider": "This will open a new window to let you authenticate with the chosen provider. You may have to allow pop ups for this site."
-        "iOS requires cross-site control": """Due to a new feature in iOS systems OAuth won't work unless you enable "cross-site control"."""
-        "login in progress": "OAuth login is in progress. Please finish authorization at the specified provider using the window that was just created."
-        "Squads reloaded": "All squads of that faction have been reloaded."
-        "Sure to delete?": "Are you sure you want to delete this squad?"
-        "Unsaved Changes Warning": "You have not saved changes to this squad.  Do you want to go back and save?"
+            "Intro Card YASB": """
+                        <h2>Fly Better Galactic Conquest Builder</h2>
+                        <p>This builder is used for the Galactic Conquest Narrative X-Wing event. Go to FlyBetterpodcast.com for more information on how to play.</p>
+                        <p>This is Week 1</p>
+                        <h5>Credits</h5>
+                        <p>Fork of <a href="https://yasb.app/">YASB.APP</a>.</p>
+                        <p>YASB is updated and maintained by Stephen Kim.</p>
+            """
         adds: (translator, data) -> # data will most likely be a string of some symbols, but you never know
             "Adds: #{translator('ui', data)}"
         removes: (translator, data) -> # data will most likely be a string of some symbols, but you never know

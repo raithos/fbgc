@@ -2822,7 +2822,7 @@ exportObj.SquadBuilder = (function() {
     this.tooltip_currently_displaying = null;
     this.randomizer_options = {
       sources: null,
-      points: 20,
+      points: 15,
       ship_limit: 0,
       collection_only: true,
       fill_zero_pts: false
@@ -2914,12 +2914,12 @@ exportObj.SquadBuilder = (function() {
 
   SquadBuilder.prototype.setupUI = function() {
     var DEFAULT_RANDOMIZER_POINTS, DEFAULT_RANDOMIZER_SHIP_LIMIT, DEFAULT_RANDOMIZER_TIMEOUT_SEC, content_container, expansion, opt, _i, _len, _ref;
-    DEFAULT_RANDOMIZER_POINTS = 20;
+    DEFAULT_RANDOMIZER_POINTS = 15;
     DEFAULT_RANDOMIZER_TIMEOUT_SEC = 4;
     DEFAULT_RANDOMIZER_SHIP_LIMIT = 0;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
-    this.status_container.append($.trim("<div class=\"row squad-name-and-points-row\">\n    <div class=\"col-md-3 squad-name-container\">\n        <div class=\"display-name\">\n            <span class=\"squad-name\"></span>\n            <i class=\"far fa-edit\"></i>\n        </div>\n        <div class=\"input-append\">\n            <input type=\"text\" maxlength=\"64\" placeholder=\"" + (this.uitranslation("Name your squad...")) + "\" />\n            <button class=\"btn save\"><i class=\"fa fa-pen-square\"></i></button>\n        </div>\n        <br />\n    </div>\n    <div class=\"col-md-4 points-display-container\">\n        Points: <span class=\"total-points\">0</span> / <input type=\"number\" class=\"desired-points\" value=\"20\">\n        <span class=\"points-remaining-container\">(<span class=\"points-remaining\"></span>&nbsp;left) <span class=\"points-destroyed red\"></span></span>\n        <span class=\"content-warning loading-failed-container d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"Broken squad link warning\"></span></span>\n        <span class=\"content-warning old-version-container d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"This squad was created for an older version of X-Wing.\"></span></span>\n        <span class=\"content-warning collection-invalid d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"Collection warning\"></span></span>\n        <span class=\"content-warning ship-number-invalid-container d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"Ship number warning\"></span></span>\n        <span class=\"content-warning multi-faction-warning-container d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"Multi-Faction warning\"></span></span>\n    </div>\n    <div class=\"col-md-5 float-right button-container\">\n        <div class=\"btn-group float-right\">\n\n            <button class=\"btn btn-info view-as-text\"><span class=\"d-none d-lg-block\"><i class=\"fa fa-print\"></i>&nbsp;<span class=\"translated\" defaultText=\"Print/Export\"></span></span><span class=\"d-lg-none\"><i class=\"fa fa-print\"></i></span></button>\n            <a class=\"btn btn-primary d-none collection\"><span class=\"d-none d-lg-block\"><i class=\"fa fa-folder-open\"></i> <span class=\"translated\" defaultText=\"Your Collection\"></span></span><span class=\"d-lg-none\"><i class=\"fa fa-folder-open\"></i></span></a>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class=\"row squad-save-buttons\">\n    <div class=\"col-md-12\">\n        <button class=\"show-authenticated btn btn-primary save-list\"><i class=\"far fa-save\"></i>&nbsp;<span class=\"translated\" defaultText=\"Save\"></span></button>\n        <button class=\"show-authenticated btn btn-primary save-list-as\"><i class=\"far fa-file\"></i>&nbsp;<span class=\"translated\" defaultText=\"Save As...\"></span></button>\n        <button class=\"show-authenticated btn btn-primary delete-list disabled\"><i class=\"fa fa-trash\"></i>&nbsp;<span class=\"translated\" defaultText=\"Delete\"></span></button>\n        <button class=\"show-authenticated btn btn-info backend-list-my-squads show-authenticated\"><i class=\"fa fa-download\"></i>&nbsp;<span class = \"translated\" defaultText=\"Load Squad\"></span></button>\n        <button class=\"btn btn-info import-squad\"><i class=\"fa fa-file-import\"></i>&nbsp;<span class=\"translated\" defaultText=\"Import\"></span></button>\n        <button class=\"btn btn-info show-points-destroyed\"><i class=\"fas fa-bullseye\"></i>&nbsp;<span class=\"show-points-destroyed-span translated\" defaultText=\"" + (this.uitranslation("Show Points Destroyed")) + "\"></span></button>                    \n        <button class=\"btn btn-danger clear-squad\"><i class=\"fa fa-plus-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"New Squad\"></span></button>\n        <span class=\"show-authenticated backend-status\"></span>\n    </div>\n</div>"));
+    this.status_container.append($.trim("<div class=\"row squad-name-and-points-row\">\n    <div class=\"col-md-3 squad-name-container\">\n        <div class=\"display-name\">\n            <span class=\"squad-name\"></span>\n            <i class=\"far fa-edit\"></i>\n        </div>\n        <div class=\"input-append\">\n            <input type=\"text\" maxlength=\"64\" placeholder=\"" + (this.uitranslation("Name your squad...")) + "\" />\n            <button class=\"btn save\"><i class=\"fa fa-pen-square\"></i></button>\n        </div>\n        <br />\n    </div>\n    <div class=\"col-md-4 points-display-container\">\n        Points: <span class=\"total-points\">0</span> / <input type=\"number\" class=\"desired-points\" value=\"15\">\n        <span class=\"points-remaining-container\">(<span class=\"points-remaining\"></span>&nbsp;left) <span class=\"points-destroyed red\"></span></span>\n        <span class=\"content-warning loading-failed-container d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"Broken squad link warning\"></span></span>\n        <span class=\"content-warning old-version-container d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"This squad was created for an older version of X-Wing.\"></span></span>\n        <span class=\"content-warning collection-invalid d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"Collection warning\"></span></span>\n        <span class=\"content-warning ship-number-invalid-container d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"Ship number warning\"></span></span>\n        <span class=\"content-warning multi-faction-warning-container d-none\"><br /><i class=\"fa fa-exclamation-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"Multi-Faction warning\"></span></span>\n    </div>\n    <div class=\"col-md-5 float-right button-container\">\n        <div class=\"btn-group float-right\">\n\n            <button class=\"btn btn-info view-as-text\"><span class=\"d-none d-lg-block\"><i class=\"fa fa-print\"></i>&nbsp;<span class=\"translated\" defaultText=\"Print/Export\"></span></span><span class=\"d-lg-none\"><i class=\"fa fa-print\"></i></span></button>\n            <a class=\"btn btn-primary d-none collection\"><span class=\"d-none d-lg-block\"><i class=\"fa fa-folder-open\"></i> <span class=\"translated\" defaultText=\"Your Collection\"></span></span><span class=\"d-lg-none\"><i class=\"fa fa-folder-open\"></i></span></a>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class=\"row squad-save-buttons\">\n    <div class=\"col-md-12\">\n        <button class=\"show-authenticated btn btn-primary save-list\"><i class=\"far fa-save\"></i>&nbsp;<span class=\"translated\" defaultText=\"Save\"></span></button>\n        <button class=\"show-authenticated btn btn-primary save-list-as\"><i class=\"far fa-file\"></i>&nbsp;<span class=\"translated\" defaultText=\"Save As...\"></span></button>\n        <button class=\"show-authenticated btn btn-primary delete-list disabled\"><i class=\"fa fa-trash\"></i>&nbsp;<span class=\"translated\" defaultText=\"Delete\"></span></button>\n        <button class=\"show-authenticated btn btn-info backend-list-my-squads show-authenticated\"><i class=\"fa fa-download\"></i>&nbsp;<span class = \"translated\" defaultText=\"Load Squad\"></span></button>\n        <button class=\"btn btn-info import-squad\"><i class=\"fa fa-file-import\"></i>&nbsp;<span class=\"translated\" defaultText=\"Import\"></span></button>\n        <button class=\"btn btn-info show-points-destroyed\"><i class=\"fas fa-bullseye\"></i>&nbsp;<span class=\"show-points-destroyed-span translated\" defaultText=\"" + (this.uitranslation("Show Points Destroyed")) + "\"></span></button>                    \n        <button class=\"btn btn-danger clear-squad\"><i class=\"fa fa-plus-circle\"></i>&nbsp;<span class=\"translated\" defaultText=\"New Squad\"></span></button>\n        <span class=\"show-authenticated backend-status\"></span>\n    </div>\n</div>"));
     this.container.append(this.status_container);
     this.xws_import_modal = $(document.createElement('DIV'));
     this.xws_import_modal.addClass('modal fade import-modal d-print-none');
@@ -3889,7 +3889,7 @@ exportObj.SquadBuilder = (function() {
     this.isStandard = false;
     this.isEpic = false;
     this.isQuickbuild = false;
-    this.desired_points_input.val(20);
+    this.desired_points_input.val(15);
     if (oldQuickbuild !== this.isQuickbuild) {
       old_id = this.current_squad.id;
       this.newSquadFromScratch($.trim(this.current_squad.name));
@@ -4142,7 +4142,7 @@ exportObj.SquadBuilder = (function() {
     if (matches != null) {
       version = parseInt(matches[1]);
       ship_splitter = version > 7 ? 'Y' : ';';
-      _ref2 = version > 7 ? ((_ref = matches[2].split('Z'), g = _ref[0], p = _ref[1], s = _ref[2], _ref), [g, parseInt(p), s]) : ((_ref1 = matches[2].split('!'), game_type_and_point_abbrev = _ref1[0], s = _ref1[1], _ref1), parseInt(game_type_and_point_abbrev.split('=')[1]) ? p = parseInt(game_type_and_point_abbrev.split('=')[1]) : p = 20, g = game_type_and_point_abbrev.split('=')[0], [g, p, s]), game_type_abbrev = _ref2[0], desired_points = _ref2[1], serialized_ships = _ref2[2];
+      _ref2 = version > 7 ? ((_ref = matches[2].split('Z'), g = _ref[0], p = _ref[1], s = _ref[2], _ref), [g, parseInt(p), s]) : ((_ref1 = matches[2].split('!'), game_type_and_point_abbrev = _ref1[0], s = _ref1[1], _ref1), parseInt(game_type_and_point_abbrev.split('=')[1]) ? p = parseInt(game_type_and_point_abbrev.split('=')[1]) : p = 15, g = game_type_and_point_abbrev.split('=')[0], [g, p, s]), game_type_abbrev = _ref2[0], desired_points = _ref2[1], serialized_ships = _ref2[2];
       if (version < 9) {
         this.old_version_container.toggleClass('d-none', false);
         this.suppress_automatic_new_ship = false;
@@ -5937,7 +5937,7 @@ exportObj.SquadBuilder = (function() {
   SquadBuilder.prototype.randomSquad = function(max_points, allowed_sources, timeout_ms, ship_limit, collection_only, fill_zero_pts) {
     var data, stopHandler;
     if (max_points == null) {
-      max_points = 200;
+      max_points = 15;
     }
     if (allowed_sources == null) {
       allowed_sources = null;
@@ -6325,7 +6325,7 @@ exportObj.SquadBuilder = (function() {
       points: this.total_points,
       vendor: {
         yasb: {
-          builder: 'YASB - X-Wing 2.5',
+          builder: 'Fly Better Galactic Conquest Builder',
           builder_url: window.location.href.split('?')[0],
           link: this.getPermaLink()
         }
@@ -6526,7 +6526,7 @@ exportObj.SquadBuilder = (function() {
           }
           serialized_squad += "XY";
         }
-        serialized_squad_intro = "v9Z" + gamemode + "Z20Z";
+        serialized_squad_intro = "v9Z" + gamemode + "Z15Z";
         serialized_squad = serialized_squad_intro + serialized_squad;
         this.loadFromSerialized(serialized_squad);
         this.current_squad.dirty = true;
