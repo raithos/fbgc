@@ -3687,10 +3687,10 @@ class exportObj.SquadBuilder
         @squad_name_input.val @current_squad.name
         return unless $.getParameterByName('f') == @faction
         if @current_squad.name != @uitranslation("Unnamed Squadron") and @current_squad.name != @uitranslation("Unsaved Squadron")
-            if (document.title != "YASB - " + @current_squad.name) 
-                document.title = "YASB - " + @current_squad.name
+            if (document.title != "FBGC Builder - " + @current_squad.name) 
+                document.title = "FBGC Builder - " + @current_squad.name
         else
-            document.title = "YASB"
+            document.title = "FBGC Builder"
         @updatePrintAndExportTexts()
 
 

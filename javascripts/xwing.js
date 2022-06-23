@@ -4017,11 +4017,11 @@ exportObj.SquadBuilder = (function() {
       return;
     }
     if (this.current_squad.name !== this.uitranslation("Unnamed Squadron") && this.current_squad.name !== this.uitranslation("Unsaved Squadron")) {
-      if (document.title !== "YASB - " + this.current_squad.name) {
-        document.title = "YASB - " + this.current_squad.name;
+      if (document.title !== "FBGC Builder - " + this.current_squad.name) {
+        document.title = "FBGC Builder - " + this.current_squad.name;
       }
     } else {
-      document.title = "YASB";
+      document.title = "FBGC Builder";
     }
     return this.updatePrintAndExportTexts();
   };
