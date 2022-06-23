@@ -2580,11 +2580,9 @@ exportObj.translations.English = {
       return "Your " + (translator('faction', faction)) + " Squads";
     },
     reallyDeleteSquadXY: function(translator, squadname) {
-      "Really delete " + squadname + "?";
-      return {
-        "Intro Card YASB": "<h2>Fly Better Galactic Conquest Builder</h2>\n<p>This builder is used for the Galactic Conquest Narrative X-Wing event. Go to FlyBetterpodcast.com for more information on how to play.</p>\n<p>This is Week 1</p>\n<h5>Credits</h5>\n<p>Fork of <a href=\"https://yasb.app/\">YASB.APP</a>.</p>\n<p>YASB is updated and maintained by Stephen Kim.</p>"
-      };
+      return "Really delete " + squadname + "?";
     },
+    "Intro Card YASB": "<h2>Fly Better Galactic Conquest Builder</h2>\n<p>This builder is used for the Galactic Conquest Narrative X-Wing event. Go to FlyBetterpodcast.com for more information on how to play.</p>\n<p>This is Week 1</p>\n<h5>Credits</h5>\n<p>Fork of <a href=\"https://yasb.app/\">YASB.APP</a>.</p>\n<p>YASB is updated and maintained by Stephen Kim.</p>",
     adds: function(translator, data) {
       return "Adds: " + (translator('ui', data));
     },
