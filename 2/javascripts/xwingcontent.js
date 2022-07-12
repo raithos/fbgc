@@ -1155,7 +1155,7 @@ exportObj.basicCardData = function() {
         skill: 2,
         points: 5,
         loadout: 5,
-        slots: ["Astromech", "Configuration", "torpedo"]
+        slots: ["Astromech", "Configuration", "Torpedo"]
       }, {
         name: "Red Squadron Veteran",
         id: 2,
@@ -1165,7 +1165,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         points: 4,
         loadout: 12,
-        slots: ["Talent", "Astromech", "torpedo", "Modification", "Configuration"]
+        slots: ["Talent", "Astromech", "Torpedo", "Modification", "Configuration"]
       }, {
         name: "Gray Squadron Bomber",
         id: 3,
@@ -1194,7 +1194,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         points: 5,
         loadout: 16,
-        slots: ["Talent", "Astromech", "torpedo", "Modification", "Configuration"]
+        slots: ["Talent", "Astromech", "Torpedo", "Modification", "Configuration"]
       }, {
         name: "Academy Pilot",
         id: 6,
@@ -1265,7 +1265,7 @@ exportObj.basicCardData = function() {
         skill: 2,
         points: 5,
         loadout: 17,
-        slots: ["Talent", "Sensor", "Crew", "Crew", "Gunner", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Gunner", "Turret", "Modification", "Configuration"]
       }, {
         name: "Planetary Sentinel",
         id: 13,
