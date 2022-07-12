@@ -3633,10 +3633,11 @@ exportObj.translations.English =
             "Your #{translator('faction', faction)} Squads"
         reallyDeleteSquadXY: (translator, squadname) -> 
             "Really delete #{squadname}?"
+
         "Intro Card YASB": """
                     <h2>Fly Better Galactic Conquest Builder</h2>
                     <p>This builder is used for the Galactic Conquest Narrative X-Wing event. Go to FlyBetterpodcast.com for more information on how to play.</p>
-                    <p>This is Week 1</p>
+                    <p>This is Mission 1</p>
                     <h5>Credits</h5>
                     <p>Fork of <a href="https://yasb.app/">YASB.APP</a>.</p>
                     <p>YASB is updated and maintained by Stephen Kim.</p>
