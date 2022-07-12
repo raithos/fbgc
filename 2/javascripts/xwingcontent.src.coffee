@@ -3570,8 +3570,10 @@ exportObj.randomizer = (faction_name, points) ->
 exportObj.standardShipInclusions = [
     {name: 'X-Wing', faction: 'Rebel Alliance'}
     {name: 'Y-Wing', faction: 'Rebel Alliance'}
+    {name: 'U-Wing', faction: 'Rebel Alliance'}
     {name: 'TIE Fighter', faction: 'Galactic Empire'}
     {name: 'TIE/rb Heavy', faction: 'Galactic Empire'}
+    {name: 'TIE Striker', faction: 'Galactic Empire'}
     {name: 'Z-95 Headhunter', faction: 'Rebel Alliance'}
 ]
 
