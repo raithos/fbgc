@@ -1293,9 +1293,9 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Striker",
         skill: 4,
-        points: 5,
+        points: 4,
         loadout: 10,
-        slots: ["Talent", "Systems", "Device", "Modification", "Modification"]
+        slots: ["Talent", "Sensor", "Device", "Modification", "Modification"]
       }
     ],
     upgradesById: [
