@@ -2668,2671 +2668,878 @@ exportObj.standardCheckBrowser = function(data, faction, type) {
   }
 };
 
-exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
+if (exportObj.codeToLanguage == null) {
+  exportObj.codeToLanguage = {};
+}
 
-exportObj.unreleasedExpansions = [];
+exportObj.codeToLanguage.en = 'English';
 
-exportObj.isReleased = function(data) {
-  var source, _i, _len, _ref;
-  _ref = data.sources;
-  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-    source = _ref[_i];
-    if (__indexOf.call(exportObj.unreleasedExpansions, source) < 0) {
-      return true;
-    }
-  }
-  return false;
-};
+if (exportObj.translations == null) {
+  exportObj.translations = {};
+}
 
-String.prototype.canonicalize = function() {
-  return this.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-');
-};
-
-exportObj.basicCardData = function() {
-  return {
-    ships: {
-      "X-Wing": {
-        name: "X-Wing",
-        xws: "T-65 X-wing".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attack: 3,
-        agility: 2,
-        hull: 4,
-        shields: 2,
-        actions: ["Focus", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]],
-        autoequip: ["Servomotor S-Foils"]
-      },
-      "Y-Wing": {
-        name: "Y-Wing",
-        xws: "BTL-A4 Y-wing".canonicalize(),
-        factions: ["Rebel Alliance", "Scum and Villainy"],
-        attack: 2,
-        agility: 1,
-        hull: 6,
-        shields: 2,
-        actions: ["Focus", "Lock", "R-Barrel Roll", "R-Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 2, 1, 2, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 3, 0, 0, 3]]
-      },
-      "A-Wing": {
-        name: "A-Wing",
-        xws: "RZ-1 A-wing".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attack: 2,
-        agility: 3,
-        hull: 2,
-        shields: 2,
-        chassis: "Vectored Thrusters",
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
-      },
-      "YT-1300": {
-        name: "YT-1300",
-        xws: "Modified YT-1300 Light Freighter".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attackdt: 3,
-        agility: 1,
-        hull: 8,
-        shields: 5,
-        keyword: ["Freighter"],
-        actions: ["Focus", "Lock", "Rotate Arc", "R-Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0]],
-        base: "Large"
-      },
-      "Customized YT-1300": {
-        name: "Customized YT-1300",
-        canonical_name: 'Customized YT-1300'.canonicalize(),
-        xws: "Customized YT-1300 Light Freighter".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attackdt: 2,
-        agility: 1,
-        hull: 8,
-        shields: 3,
-        keyword: ["Freighter"],
-        actions: ["Focus", "Lock", "Rotate Arc", "R-Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0]],
-        base: "Large"
-      },
-      "TIE Fighter": {
-        name: "TIE Fighter",
-        xws: "TIE/ln Fighter".canonicalize(),
-        factions: ["Rebel Alliance", "Galactic Empire"],
-        attack: 2,
-        agility: 3,
-        hull: 3,
-        shields: 0,
-        actions: ["Focus", "Barrel Roll", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 3], [0, 0, 2, 0, 0, 0]]
-      },
-      "TIE Advanced": {
-        name: "TIE Advanced",
-        xws: "TIE Advanced x1".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 2,
-        agility: 3,
-        hull: 3,
-        shields: 2,
-        chassis: "Advanced Targeting Computer",
-        actions: ["Focus", "R-> Barrel Roll", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "TIE Interceptor": {
-        name: "TIE Interceptor",
-        icon: "tieinterceptor",
-        xws: "TIE/IN Interceptor".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 3,
-        agility: 3,
-        hull: 3,
-        shields: 0,
-        chassis: "Autothrusters",
-        actions: ["Focus", "Barrel Roll", "Boost", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0]]
-      },
-      "Firespray-31": {
-        name: "Firespray-31",
-        xws: "Firespray-class Patrol Craft".canonicalize(),
-        factions: ["Scum and Villainy", "Separatist Alliance"],
-        attack: 3,
-        attackb: 3,
-        agility: 2,
-        hull: 6,
-        shields: 4,
-        base: "Medium",
-        actions: ["Focus", "Lock", "Boost", "R-Reinforce"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "HWK-290": {
-        name: "HWK-290",
-        xws: "HWK-290 Light Freighter".canonicalize(),
-        factions: ["Rebel Alliance", "Scum and Villainy"],
-        attackt: 2,
-        agility: 2,
-        hull: 3,
-        shields: 2,
-        keyword: ["Freighter"],
-        actions: ["Focus", "R-> Rotate Arc", "Lock", "R-> Rotate Arc", "Rotate Arc", "R-Boost", "R-Jam"],
-        maneuvers: [[0, 0, 3, 0, 0], [0, 1, 1, 1, 0], [2, 2, 1, 2, 2], [3, 2, 1, 2, 3], [0, 0, 2, 0, 0]]
-      },
-      "Lambda-Class Shuttle": {
-        name: "Lambda-Class Shuttle",
-        xws: "Lambda-class T-4a Shuttle".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 3,
-        attackb: 2,
-        agility: 1,
-        hull: 6,
-        shields: 4,
-        actions: ["Focus", "Coordinate", "Reinforce", "R-Jam"],
-        maneuvers: [[0, 0, 3, 0, 0], [0, 1, 1, 1, 0], [3, 2, 1, 2, 3], [0, 3, 2, 3, 0]],
-        base: "Large"
-      },
-      "B-Wing": {
-        name: "B-Wing",
-        xws: "A/SF-01 B-wing".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attack: 3,
-        agility: 1,
-        hull: 4,
-        shields: 4,
-        actions: ["Focus", "R-> Barrel Roll", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [2, 2, 1, 2, 2, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]],
-        autoequip: ['Stabilized S-Foils']
-      },
-      "TIE Bomber": {
-        name: "TIE Bomber",
-        xws: "TIE/sa Bomber".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 2,
-        agility: 2,
-        hull: 6,
-        shields: 0,
-        chassis: "Nimble Bomber",
-        actions: ["Focus", "Lock", "Barrel Roll", "R-> Lock", "R-Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
-      },
-      "Z-95 Headhunter": {
-        name: "Z-95 Headhunter",
-        xws: "Z-95-AF4 Headhunter".canonicalize(),
-        factions: ["Rebel Alliance", "Scum and Villainy"],
-        attack: 2,
-        agility: 2,
-        hull: 2,
-        shields: 2,
-        actions: ["Focus", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 3]]
-      },
-      "TIE Defender": {
-        name: "TIE Defender",
-        xws: "TIE/D Defender".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 3,
-        agility: 3,
-        hull: 3,
-        shields: 4,
-        chassis: "Full Throttle",
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 0, 1, 3, 0], [3, 2, 1, 2, 3, 3], [2, 2, 1, 2, 2, 0], [0, 0, 1, 0, 0, 2], [0, 0, 1, 0, 0, 0]]
-      },
-      "E-Wing": {
-        name: "E-Wing",
-        xws: "E-wing".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attack: 3,
-        agility: 3,
-        hull: 3,
-        shields: 3,
-        chassis: "Experimental Scanners",
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "R-> Lock", "Boost", "R-> Lock"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0]]
-      },
-      "TIE Phantom": {
-        name: "TIE Phantom",
-        xws: "TIE/ph Phantom".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 3,
-        agility: 2,
-        hull: 3,
-        shields: 2,
-        chassis: "Stygium Array",
-        actions: ["Focus", "Evade", "Barrel Roll", "Cloak"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 3]]
-      },
-      "YT-2400": {
-        name: "YT-2400",
-        xws: "YT-2400 Light Freighter".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attackdt: 4,
-        agility: 2,
-        hull: 6,
-        shields: 4,
-        keyword: ["Freighter"],
-        chassis: "Sensor Blindspot",
-        actions: ["Focus", "Lock", "R-Barrel Roll", "Rotate Arc"],
-        base: "Large",
-        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 0], [2, 2, 2, 2, 2, 0], [0, 0, 2, 0, 0, 3]]
-      },
-      "VT-49 Decimator": {
-        name: "VT-49 Decimator",
-        xws: "VT-49 Decimator".canonicalize(),
-        factions: ["Galactic Empire"],
-        attackdt: 3,
-        agility: 0,
-        hull: 12,
-        shields: 4,
-        actions: ["Focus", "Lock", "Reinforce", "Rotate Arc", "R-Coordinate"],
-        base: "Large",
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0], [2, 2, 1, 2, 2, 0], [2, 2, 2, 2, 2, 0], [0, 0, 2, 0, 0, 0]]
-      },
-      "StarViper": {
-        name: "StarViper",
-        xws: "StarViper-class Attack Platform".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 3,
-        agility: 3,
-        hull: 4,
-        shields: 1,
-        chassis: "Microthrusters",
-        actions: ["Focus", "Lock", "Barrel Roll", "R-> Focus", "Boost", "R-> Focus"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [0, 2, 1, 2, 0, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0]]
-      },
-      "M3-A Interceptor": {
-        name: "M3-A Interceptor",
-        xws: "M3-A Interceptor".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 2,
-        agility: 3,
-        hull: 3,
-        shields: 1,
-        chassis: "Weapon Hardpoint",
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0], [2, 2, 1, 2, 2, 0], [0, 2, 1, 2, 0, 3], [0, 0, 2, 0, 0, 0], [0, 0, 2, 0, 0, 3]]
-      },
-      "Aggressor": {
-        name: "Aggressor",
-        xws: "Aggressor Assault Fighter".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 3,
-        agility: 3,
-        hull: 5,
-        shields: 3,
-        chassis: "Advanced Droid Brain",
-        actions: ["Calculate", "Evade", "Lock", "Boost"],
-        base: "Medium",
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [0, 1, 1, 1, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0]]
-      },
-      "YV-666": {
-        name: "YV-666",
-        xws: "YV-666 Light Freighter".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attackf: 3,
-        agility: 1,
-        hull: 9,
-        shields: 3,
-        base: "Large",
-        actions: ["Focus", "Reinforce", "Lock"],
-        maneuvers: [[0, 0, 3, 0, 0, 0], [0, 1, 1, 1, 0, 0], [3, 2, 1, 2, 3, 0], [2, 2, 1, 2, 2, 0], [0, 0, 2, 0, 0, 0]]
-      },
-      "Kihraxz Fighter": {
-        name: "Kihraxz Fighter",
-        xws: "Kihraxz Fighter".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 3,
-        agility: 2,
-        hull: 5,
-        shields: 1,
-        actions: ["Focus", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 3, 3], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "K-Wing": {
-        name: "K-Wing",
-        xws: "BTL-S8 K-wing".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attackdt: 2,
-        agility: 1,
-        hull: 6,
-        shields: 3,
-        base: "Medium",
-        actions: ["Focus", "Lock", "Slam", "Rotate Arc", "Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 2, 1, 2, 2, 0], [0, 2, 2, 2, 0, 0]]
-      },
-      "TIE Punisher": {
-        name: "TIE Punisher",
-        xws: "TIE/ca Punisher".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 2,
-        agility: 1,
-        hull: 6,
-        shields: 3,
-        base: "Medium",
-        actions: ["Focus", "Lock", "R-Barrel Roll", "Boost", "R-> Lock", "Reload"],
-        maneuvers: [[0, 0, 3, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 2, 1, 2, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 0, 0, 0, 3]]
-      },
-      "VCX-100": {
-        name: "VCX-100",
-        xws: "VCX-100 Light Freighter".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attack: 4,
-        agility: 0,
-        hull: 10,
-        shields: 4,
-        base: "Large",
-        keyword: ["Freighter"],
-        chassis: "Tail Gun",
-        actions: ["Focus", "Lock", "Reinforce"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0], [2, 1, 1, 1, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 2, 0, 0, 3]]
-      },
-      "Attack Shuttle": {
-        name: "Attack Shuttle",
-        xws: "Attack Shuttle".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attack: 3,
-        agility: 2,
-        hull: 3,
-        shields: 1,
-        chassis: "Locked and Loaded",
-        actions: ["Focus", "Evade", "Barrel Roll", "R-> Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0], [2, 2, 1, 2, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 2, 0, 0, 3]]
-      },
-      "TIE Advanced Prototype": {
-        name: "TIE Advanced Prototype",
-        xws: "TIE Advanced v1".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 2,
-        agility: 3,
-        hull: 2,
-        shields: 2,
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "R-> Focus", "Boost", "R-> Focus"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "G-1A Starfighter": {
-        name: "G-1A Starfighter",
-        xws: "G-1A Starfighter".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 3,
-        agility: 1,
-        hull: 5,
-        shields: 4,
-        base: "Medium",
-        actions: ["Focus", "Lock", "Jam"],
-        maneuvers: [[0, 0, 3, 0, 0, 0], [3, 1, 1, 1, 3, 0], [2, 2, 1, 2, 2, 3], [0, 3, 2, 3, 0, 0], [0, 0, 3, 0, 0, 3]]
-      },
-      "JumpMaster 5000": {
-        name: "JumpMaster 5000",
-        xws: "JumpMaster 5000".canonicalize(),
-        factions: ["Scum and Villainy"],
-        base: "Large",
-        attackt: 2,
-        agility: 2,
-        hull: 6,
-        shields: 3,
-        actions: ["Focus", "R-> Rotate Arc", "Lock", "R-> Rotate Arc", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 2, 3, 0, 0, 0], [2, 1, 1, 2, 3, 0, 0, 0], [0, 1, 1, 2, 0, 0, 3, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
-      },
-      "ARC-170": {
-        name: "ARC-170",
-        xws: "ARC-170 Starfighter".canonicalize(),
-        factions: ["Rebel Alliance", "Galactic Republic"],
-        attack: 3,
-        attackb: 2,
-        agility: 1,
-        hull: 6,
-        shields: 3,
-        base: "Medium",
-        actions: ["Focus", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 1, 1, 1, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 3, 0, 0, 3]]
-      },
-      "Fang Fighter": {
-        name: "Fang Fighter",
-        xws: "Fang Fighter".canonicalize(),
-        factions: ["Scum and Villainy", "Rebel Alliance"],
-        attack: 3,
-        agility: 3,
-        hull: 4,
-        shields: 0,
-        chassis: "Concordia Faceoff",
-        actions: ["Focus", "Lock", "Barrel Roll", "R-> Focus", "Boost", "R-> Focus"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 3, 3], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Lancer-Class Pursuit Craft": {
-        name: "Lancer-Class Pursuit Craft",
-        xws: "Lancer-class Pursuit Craft".canonicalize(),
-        factions: ["Scum and Villainy"],
-        base: "Large",
-        attack: 3,
-        attackt: 2,
-        agility: 2,
-        hull: 8,
-        shields: 2,
-        actions: ["Focus", "Evade", "Lock", "Rotate Arc"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [2, 2, 1, 2, 2, 0], [1, 1, 1, 1, 1, 0], [0, 0, 1, 0, 0, 0], [0, 0, 2, 0, 0, 3]]
-      },
-      "Quadjumper": {
-        name: "Quadjumper",
-        xws: "Quadrijet Transfer Spacetug".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 2,
-        agility: 2,
-        hull: 5,
-        shields: 0,
-        chassis: "Spacetug Tractor Array",
-        actions: ["Focus", "R-Evade", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 3, 0, 3], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0, 0, 3, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "U-Wing": {
-        name: "U-Wing",
-        xws: "UT-60D U-wing".canonicalize(),
-        factions: ["Rebel Alliance"],
-        base: "Medium",
-        attack: 3,
-        agility: 2,
-        hull: 5,
-        shields: 3,
-        actions: ["Focus", "Lock", "R-Coordinate"],
-        maneuvers: [[0, 0, 3, 0, 0], [0, 1, 1, 1, 0], [2, 1, 1, 1, 2], [0, 2, 2, 2, 0], [0, 0, 2, 0, 0]],
-        autoequip: ["Pivot Wing"]
-      },
-      "TIE Striker": {
-        name: "TIE Striker",
-        xws: "TIE/sk Striker".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 3,
-        agility: 2,
-        hull: 4,
-        shields: 0,
-        chassis: "Adaptive Ailerons",
-        actions: ["Focus", "Evade", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 3, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3], [0, 2, 1, 2, 0, 0, 0, 0]]
-      },
-      "Auzituck Gunship": {
-        name: "Auzituck Gunship",
-        xws: "Auzituck Gunship".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attackf: 3,
-        agility: 1,
-        hull: 6,
-        shields: 2,
-        actions: ["Focus", "R-Barrel Roll", "Reinforce"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0]]
-      },
-      "Scurrg H-6 Bomber": {
-        name: "Scurrg H-6 Bomber",
-        xws: "Scurrg H-6 Bomber".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 3,
-        agility: 1,
-        hull: 6,
-        shields: 4,
-        base: "Medium",
-        actions: ["Focus", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "TIE Aggressor": {
-        name: "TIE Aggressor",
-        xws: "TIE/ag Aggressor".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 2,
-        agility: 2,
-        hull: 4,
-        shields: 1,
-        actions: ["Focus", "Lock", "Barrel Roll", "R-> Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "Alpha-Class Star Wing": {
-        name: "Alpha-Class Star Wing",
-        xws: "Alpha-class Star Wing".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 2,
-        agility: 2,
-        hull: 4,
-        shields: 3,
-        actions: ["Focus", "Lock", "Slam", "Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0]]
-      },
-      "M12-L Kimogila Fighter": {
-        name: "M12-L Kimogila Fighter",
-        xws: "M12-L Kimogila Fighter".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 3,
-        agility: 1,
-        hull: 7,
-        shields: 2,
-        base: "Medium",
-        chassis: "Dead to Rights",
-        actions: ["Focus", "Lock", "R-Barrel Roll", "Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 0], [0, 0, 0, 0, 0, 3]]
-      },
-      "Sheathipede-Class Shuttle": {
-        name: "Sheathipede-Class Shuttle",
-        xws: "Sheathipede-class Shuttle".canonicalize(),
-        factions: ["Rebel Alliance"],
-        attack: 2,
-        attackb: 2,
-        agility: 2,
-        hull: 4,
-        shields: 1,
-        chassis: "Comms Shuttle",
-        actions: ["Focus", "Coordinate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 3, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "TIE Reaper": {
-        name: "TIE Reaper",
-        xws: "TIE Reaper".canonicalize(),
-        factions: ["Galactic Empire"],
-        attack: 3,
-        agility: 1,
-        hull: 6,
-        shields: 2,
-        base: "Medium",
-        chassis: "Controlled Ailerons",
-        actions: ["Focus", "Evade", "Jam", "R-Coordinate"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 3, 3], [3, 2, 1, 2, 3, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0]]
-      },
-      "Escape Craft": {
-        name: "Escape Craft",
-        xws: "Escape Craft".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 2,
-        agility: 2,
-        hull: 2,
-        shields: 2,
-        chassis: "Co-Pilot",
-        actions: ["Focus", "Barrel Roll", "R-Coordinate"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0], [0, 2, 2, 2, 0, 3, 0, 0]]
-      },
-      "T-70 X-Wing": {
-        name: "T-70 X-Wing",
-        xws: "T-70 X-wing".canonicalize(),
-        factions: ["Resistance"],
-        attack: 3,
-        agility: 2,
-        hull: 4,
-        shields: 3,
-        chassis: "Weapon Hardpoint",
-        actions: ["Focus", "Lock", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]],
-        autoequip: ["Integrated S-Foils"]
-      },
-      "RZ-2 A-Wing": {
-        name: "RZ-2 A-Wing",
-        xws: "RZ-2 A-wing".canonicalize(),
-        factions: ["Resistance"],
-        attackt: 2,
-        agility: 3,
-        hull: 2,
-        shields: 2,
-        chassis: "Refined Gyrostabilizers",
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
-      },
-      "TIE/FO Fighter": {
-        name: "TIE/FO Fighter",
-        xws: "TIE/fo Fighter".canonicalize(),
-        factions: ["First Order"],
-        attack: 2,
-        agility: 3,
-        hull: 3,
-        shields: 1,
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0], [1, 1, 1, 1, 1, 0, 3, 3], [2, 2, 1, 2, 2, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0]]
-      },
-      "TIE/VN Silencer": {
-        name: "TIE/VN Silencer",
-        xws: "TIE/vn Silencer".canonicalize(),
-        factions: ["First Order"],
-        attack: 3,
-        agility: 3,
-        hull: 4,
-        shields: 2,
-        chassis: "Autothrusters",
-        actions: ["Focus", "Boost", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "TIE/SF Fighter": {
-        name: "TIE/SF Fighter",
-        xws: "TIE/sf Fighter".canonicalize(),
-        factions: ["First Order"],
-        attack: 2,
-        attackt: 2,
-        agility: 2,
-        hull: 3,
-        shields: 3,
-        chassis: "Heavy Weapon Turret",
-        actions: ["Focus", "> Rotate Arc", "Evade", "> Rotate Arc", "Lock", "> Rotate Arc", "Barrel Roll", "> Rotate Arc"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Upsilon-Class Command Shuttle": {
-        name: "Upsilon-Class Command Shuttle",
-        xws: "Upsilon-class command shuttle".canonicalize(),
-        factions: ["First Order"],
-        attack: 4,
-        agility: 1,
-        hull: 6,
-        shields: 6,
-        chassis: "Linked Battery",
-        actions: ["Focus", "Lock", "Reinforce", "Coordinate", "Jam"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
-        base: "Large"
-      },
-      "MG-100 StarFortress": {
-        name: "MG-100 StarFortress",
-        xws: "MG-100 StarFortress".canonicalize(),
-        factions: ["Resistance"],
-        attack: 3,
-        attackdt: 2,
-        agility: 1,
-        hull: 9,
-        shields: 3,
-        actions: ["Focus", "Lock", "Rotate Arc", "Reload"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
-        base: "Large"
-      },
-      "Scavenged YT-1300": {
-        name: "Scavenged YT-1300",
-        canonical_name: 'Scavenged YT-1300'.canonicalize(),
-        xws: "Scavenged YT-1300".canonicalize(),
-        factions: ["Resistance"],
-        attackdt: 3,
-        agility: 1,
-        hull: 8,
-        shields: 3,
-        keyword: ["Freighter"],
-        actions: ["Focus", "Lock", "R-Boost", "R-Rotate Arc"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 2, 2, 2, 2, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0]],
-        base: "Large"
-      },
-      "Mining Guild TIE Fighter": {
-        name: "Mining Guild TIE Fighter",
-        xws: "Modified TIE/ln Fighter".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 2,
-        agility: 3,
-        hull: 3,
-        shields: 0,
-        chassis: "Notched Stabilizers",
-        actions: ["Focus", "Barrel Roll", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 0], [0, 0, 3, 0, 0, 0]]
-      },
-      "V-19 Torrent": {
-        name: "V-19 Torrent",
-        xws: "V-19 Torrent Starfighter".canonicalize(),
-        factions: ["Galactic Republic"],
-        attack: 2,
-        agility: 2,
-        hull: 5,
-        shields: 0,
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "R-> Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [0, 3, 1, 3, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Delta-7 Aethersprite": {
-        name: "Delta-7 Aethersprite",
-        xws: "Delta-7 Aethersprite".canonicalize(),
-        factions: ["Galactic Republic"],
-        attack: 2,
-        agility: 3,
-        hull: 3,
-        shields: 1,
-        chassis: "Fine-Tuned Controls",
-        actions: ["Focus", "F-Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "Delta-7b Aethersprite": {
-        name: "Delta-7b Aethersprite",
-        icon: "delta7aethersprite",
-        xws: "Delta-7b Aethersprite".canonicalize(),
-        factions: ["Galactic Republic"],
-        attack: 3,
-        agility: 2,
-        hull: 3,
-        shields: 3,
-        chassis: "Fine-Tuned Controls",
-        actions: ["Focus", "F-Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "Sith Infiltrator": {
-        name: "Sith Infiltrator",
-        xws: "Sith Infiltrator".canonicalize(),
-        factions: ["Separatist Alliance"],
-        attack: 3,
-        agility: 1,
-        hull: 6,
-        base: "Large",
-        shields: 4,
-        actions: ["Focus", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "Vulture-class Droid Fighter": {
-        name: "Vulture-class Droid Fighter",
-        xws: "Vulture-class Droid Fighter".canonicalize(),
-        factions: ["Separatist Alliance"],
-        attack: 2,
-        agility: 2,
-        hull: 3,
-        shields: 0,
-        chassis: "Networked Calculations",
-        actions: ["Calculate", "Lock", "Barrel Roll", "R-> Calculate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 3, 0, 0, 0, 0], [1, 2, 1, 2, 1, 0, 0, 0, 3, 3], [2, 3, 1, 3, 2, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]],
-        autoequip: ['Grappling Struts']
-      },
-      "Belbullab-22 Starfighter": {
-        name: "Belbullab-22 Starfighter",
-        xws: "Belbullab-22 Starfighter".canonicalize(),
-        factions: ["Separatist Alliance"],
-        attack: 3,
-        agility: 2,
-        hull: 3,
-        shields: 2,
-        actions: ["Focus", "Lock", "Barrel Roll", "R-> Focus", "Boost", "R-> Focus"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 3, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Naboo Royal N-1 Starfighter": {
-        name: "Naboo Royal N-1 Starfighter",
-        xws: "Naboo Royal N-1 Starfighter".canonicalize(),
-        factions: ["Galactic Republic"],
-        attack: 2,
-        agility: 2,
-        hull: 3,
-        shields: 2,
-        chassis: "Full Throttle",
-        actions: ["Focus", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Hyena-Class Droid Bomber": {
-        name: "Hyena-Class Droid Bomber",
-        xws: "Hyena-Class Droid Bomber".canonicalize(),
-        factions: ["Separatist Alliance"],
-        attack: 2,
-        agility: 2,
-        hull: 5,
-        shields: 0,
-        chassis: "Networked Calculations",
-        actions: ["Calculate", "Lock", "Barrel Roll", "R-> Lock", "R-Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 3, 2, 3, 2, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 3, 0, 0, 3, 3], [2, 0, 1, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]],
-        autoequip: ['Landing Struts']
-      },
-      "Resistance Transport Pod": {
-        name: "Resistance Transport Pod",
-        xws: "Resistance Transport Pod".canonicalize(),
-        factions: ["Resistance"],
-        attack: 2,
-        agility: 2,
-        hull: 3,
-        shields: 1,
-        actions: ["Focus", "R-Lock", "R-Barrel Roll", "R-Jam"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 3, 2, 3, 0, 3, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Resistance Transport": {
-        name: "Resistance Transport",
-        xws: "Resistance Transport".canonicalize(),
-        factions: ["Resistance"],
-        attack: 2,
-        agility: 1,
-        hull: 5,
-        shields: 3,
-        actions: ["Focus", "Lock", "R-Coordinate", "R-Jam"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0, 3, 0, 3], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Nantex-Class Starfighter": {
-        name: "Nantex-Class Starfighter",
-        xws: "Nantex-Class Starfighter".canonicalize(),
-        factions: ["Separatist Alliance"],
-        attackbull: 3,
-        attackt: 2,
-        agility: 3,
-        hull: 4,
-        shields: 0,
-        chassis: "Pinpoint Tractor Array",
-        actions: ["Focus", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
-      },
-      "BTL-B Y-Wing": {
-        name: "BTL-B Y-Wing",
-        xws: "BTL-B Y-Wing".canonicalize(),
-        factions: ["Galactic Republic"],
-        attack: 2,
-        agility: 1,
-        hull: 5,
-        shields: 3,
-        chassis: "Plated Hull",
-        actions: ["Focus", "Lock", "R-Barrel Roll", "R-Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0], [2, 2, 1, 2, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 3, 0, 0, 3], [0, 0, 0, 0, 0, 0]]
-      },
-      "Fireball": {
-        name: "Fireball",
-        xws: "Fireball".canonicalize(),
-        factions: ["Resistance"],
-        attack: 2,
-        agility: 2,
-        hull: 6,
-        shields: 0,
-        chassis: "Explosion with Wings",
-        actions: ["Focus", "Evade", "Barrel Roll", "Slam"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "TIE/Ba Interceptor": {
-        name: "TIE/Ba Interceptor",
-        xws: "TIE/Ba Interceptor".canonicalize(),
-        factions: ["First Order"],
-        attack: 3,
-        agility: 3,
-        hull: 2,
-        shields: 2,
-        chassis: "Fine-Tuned Thrusters",
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "Xi-class Light Shuttle": {
-        name: "Xi-class Light Shuttle",
-        xws: "Xi-class Light Shuttle".canonicalize(),
-        factions: ["First Order"],
-        attack: 2,
-        agility: 2,
-        hull: 5,
-        shields: 2,
-        base: "Medium",
-        actions: ["Focus", "R-Lock", "R-Coordinate", "Jam"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "HMP Droid Gunship": {
-        name: "HMP Droid Gunship",
-        xws: "HMP Droid Gunship".canonicalize(),
-        factions: ["Separatist Alliance"],
-        attackf: 2,
-        agility: 1,
-        hull: 5,
-        shields: 3,
-        chassis: "Networked Aim",
-        actions: ["Calculate", "Lock", "R-Barrel Roll", "Reload", "R-> Calculate"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 0, 0, 0, 0, 0], [2, 3, 2, 3, 2, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]],
-        autoequip: ['Repulsorlift Stabilizers']
-      },
-      "LAAT/i Gunship": {
-        name: "LAAT/i Gunship",
-        xws: "LAAT/i Gunship".canonicalize(),
-        factions: ["Galactic Republic"],
-        attackdt: 2,
-        agility: 1,
-        hull: 8,
-        shields: 2,
-        base: "Medium",
-        chassis: "Fire Convergence",
-        actions: ["Focus", "Lock", "Rotate Arc", "R-Reinforce", "Reload"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "TIE/rb Heavy": {
-        name: "TIE/rb Heavy",
-        xws: "TIE/rb Heavy".canonicalize(),
-        factions: ["Galactic Empire"],
-        attackt: 2,
-        agility: 1,
-        hull: 8,
-        shields: 0,
-        base: "Medium",
-        chassis: "Rotating Cannons",
-        actions: ["Focus", "Reinforce", "Lock", "R-Barrel Roll", "Rotate Arc", "R-> Calculate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Droid Tri-Fighter": {
-        name: "Droid Tri-Fighter",
-        xws: "Droid Tri-Fighter".canonicalize(),
-        factions: ["Separatist Alliance"],
-        attack: 3,
-        agility: 3,
-        hull: 3,
-        shields: 0,
-        chassis: "Networked Calculations",
-        actions: ["Calculate", "Evade", "Lock", "Barrel Roll", "R-> Evade", "Boost", "R-> Calculate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 3, 3], [1, 2, 1, 2, 1, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "Nimbus-class V-Wing": {
-        name: "Nimbus-class V-Wing",
-        xws: "Nimbus-class V-Wing".canonicalize(),
-        factions: ["Galactic Republic"],
-        attack: 2,
-        agility: 3,
-        hull: 2,
-        shields: 2,
-        keyword: ["TIE"],
-        chassis: "Twin Ion Engines",
-        actions: ["Focus", "Lock", "R-Barrel Roll", "Boost", "R-> Lock"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 3, 0, 3, 2, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 3, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Eta-2 Actis": {
-        name: "Eta-2 Actis",
-        xws: "Eta-2 Actis".canonicalize(),
-        factions: ["Galactic Republic"],
-        attackbull: 3,
-        attack: 2,
-        agility: 3,
-        hull: 3,
-        shields: 0,
-        chassis: "Intuitive Controls",
-        actions: ["Focus", "Evade", "F-Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 4, 4], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Syliure-class Hyperspace Ring": {
-        name: "Syliure-class Hyperspace Ring",
-        xws: "Syliure-class Hyperspace Ring".canonicalize(),
-        factions: ["Galactic Republic"],
-        agility: 1,
-        hull: 1,
-        shields: 2,
-        actions: [],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "BTA-NR2 Y-Wing": {
-        name: "BTA-NR2 Y-Wing",
-        xws: "BTA-NR2 Y-Wing".canonicalize(),
-        factions: ["Resistance"],
-        attack: 2,
-        agility: 1,
-        hull: 4,
-        shields: 3,
-        chassis: "Intuitive Interface",
-        actions: ["Focus", "R-Lock", "R-Barrel Roll", "R-Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 2, 1, 2, 2, 0], [3, 2, 1, 2, 3, 0], [0, 0, 3, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
-      },
-      "TIE/WI Whisper": {
-        name: "TIE/WI Whisper",
-        xws: "TIE/Wi Whisper Modified Interceptor".canonicalize(),
-        factions: ["First Order"],
-        attackbull: 3,
-        attackt: 2,
-        agility: 2,
-        hull: 3,
-        shields: 2,
-        chassis: "Heavy Weapon Turret",
-        actions: ["Focus", "> Rotate Arc", "Evade", "Lock", "Barrel Roll", "> Rotate Arc", "Boost", "> Rotate Arc"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]],
-        autoequip: ["Enhanced Jamming Suite"]
-      },
-      "TIE/Se Bomber": {
-        name: "TIE/Se Bomber",
-        xws: "TIE/Se Bomber".canonicalize(),
-        factions: ["First Order"],
-        attack: 2,
-        agility: 2,
-        hull: 4,
-        shields: 2,
-        chassis: "Pursuit Thrusters",
-        actions: ["Focus", "Lock", "Barrel Roll", "R-> Lock", "R-Boost", "Reload", "R-> Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "Gauntlet Fighter": {
-        name: "Gauntlet Fighter",
-        xws: "Gauntlet Fighter".canonicalize(),
-        factions: ["Rebel Alliance", "Galactic Empire", "Scum and Villainy", "Galactic Republic", "Separatist Alliance"],
-        attack: 3,
-        attackb: 2,
-        agility: 2,
-        hull: 9,
-        shields: 2,
-        base: "Large",
-        actions: ["Focus", "R-Reinforce", "Lock", "R-Coordinate"],
-        autoequip: ["Swivel Wing"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 1, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-      },
-      "ST-70 Assault Ship": {
-        name: "ST-70 Assault Ship",
-        xws: "ST-70 Assault Ship".canonicalize(),
-        factions: ["Scum and Villainy"],
-        attack: 3,
-        agility: 2,
-        hull: 7,
-        shields: 2,
-        base: "Medium",
-        actions: ["Focus", "Evade", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "Clone Z-95 Headhunter": {
-        name: "Clone Z-95 Headhunter",
-        xws: "Clone Z-95 Headhunter".canonicalize(),
-        factions: ["Galactic Republic"],
-        attack: 2,
-        agility: 2,
-        hull: 2,
-        shields: 2,
-        chassis: "Versatile Frame",
-        actions: ["Focus", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 3]]
-      },
-      "Rogue-class Starfighter": {
-        name: "Rogue-class Starfighter",
-        xws: "Rogue-class Starfighter".canonicalize(),
-        factions: ["Separatist Alliance", "Scum and Villainy"],
-        attack: 2,
-        agility: 2,
-        hull: 5,
-        shields: 2,
-        chassis: "Dead to Rights",
-        actions: ["Focus", "R-> Boost", "Focus", "R-> Barrel Roll", "Evade", "R-> Barrel Roll", "Lock", "R-Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 3, 3], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "CR90 Corellian Corvette": {
-        name: "CR90 Corellian Corvette",
-        xws: "CR90 Corellian Corvette".canonicalize(),
-        icon: "cr90corvette",
-        factions: ["Galactic Republic", "Rebel Alliance"],
-        base: "Huge",
-        attackl: 4,
-        attackr: 4,
-        agility: 0,
-        hull: 18,
-        shields: 7,
-        shieldrecurr: 2,
-        energy: 7,
-        energyrecurr: 2,
-        actions: ["Focus", "Reinforce", "Lock", "R-Coordinate", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 2, 2, 0], [0, 1, 1, 1, 0], [0, 3, 1, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
-      },
-      "Raider-class Corvette": {
-        name: "Raider-class Corvette",
-        xws: "Raider-class Corvette".canonicalize(),
-        factions: ["Galactic Empire", "First Order"],
-        base: "Huge",
-        attackf: 4,
-        agility: 0,
-        hull: 20,
-        shields: 8,
-        shieldrecurr: 2,
-        energy: 6,
-        energyrecurr: 2,
-        actions: ["Focus", "Reinforce", "Lock", "Coordinate", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 2, 1, 0], [0, 2, 1, 2, 0], [0, 3, 1, 3, 0], [0, 0, 2, 0, 0], [0, 0, 3, 0, 0]]
-      },
-      "GR-75 Medium Transport": {
-        name: "GR-75 Medium Transport",
-        xws: "GR-75 Medium Transport".canonicalize(),
-        factions: ["Rebel Alliance", "Resistance"],
-        base: "Huge",
-        attack: 2,
-        agility: 0,
-        hull: 12,
-        shields: 3,
-        shieldrecurr: 1,
-        energy: 4,
-        energyrecurr: 1,
-        actions: ["Focus", "R-Lock", "Coordinate", "R-Reinforce", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 1, 1, 0], [0, 2, 2, 2, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
-      },
-      "Gozanti-class Cruiser": {
-        name: "Gozanti-class Cruiser",
-        xws: "Gozanti-class Cruiser".canonicalize(),
-        factions: ["Galactic Empire", "First Order"],
-        base: "Huge",
-        attack: 3,
-        agility: 0,
-        hull: 11,
-        shields: 5,
-        shieldrecurr: 1,
-        energy: 3,
-        energyrecurr: 1,
-        actions: ["Focus", "Reinforce", "Lock", "Coordinate", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 1, 2, 0], [0, 3, 1, 3, 0], [0, 0, 1, 0, 0], [0, 0, 3, 0, 0]]
-      },
-      "C-ROC Cruiser": {
-        name: "C-ROC Cruiser",
-        xws: "C-ROC Cruiser".canonicalize(),
-        factions: ["Separatist Alliance", "Scum and Villainy"],
-        base: "Huge",
-        attack: 3,
-        agility: 0,
-        hull: 12,
-        shields: 4,
-        shieldrecurr: 1,
-        energy: 4,
-        energyrecurr: 1,
-        actions: ["Focus", "Reinforce", "Lock", "R-Coordinate", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 1, 2, 0], [0, 2, 1, 2, 0], [0, 3, 2, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
-      },
-      "Trident-class Assault Ship": {
-        name: "Trident-class Assault Ship",
-        xws: "Trident-class Assault Ship".canonicalize(),
-        factions: ["Separatist Alliance", "Scum and Villainy"],
-        base: "Huge",
-        attack: 3,
-        agility: 0,
-        hull: 10,
-        shields: 4,
-        shieldrecurr: 1,
-        energy: 3,
-        energyrecurr: 2,
-        actions: ["Focus", "R-Evade", "R-Reinforce", "Lock", "R-Coordinate"],
-        maneuvers: [[0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
-        autoequip: ['Tractor Tentacles']
-      }
+exportObj.translations.English = {
+  sloticon: {
+    "Astromech": '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>',
+    "Force": '<i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>',
+    "Bomb": '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>',
+    "Cannon": '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>',
+    "Crew": '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>',
+    "Talent": '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>',
+    "Missile": '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>',
+    "Sensor": '<i class="xwing-miniatures-font xwing-miniatures-font-sensor"></i>',
+    "Torpedo": '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>',
+    "Turret": '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>',
+    "Illicit": '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>',
+    "Configuration": '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>',
+    "Modification": '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>',
+    "Gunner": '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>',
+    "Device": '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>',
+    "Tech": '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>',
+    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>',
+    "Hardpoint": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>',
+    "Team": '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>',
+    "Cargo": '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>',
+    "Command": '<i class="xwing-miniatures-font xwing-miniatures-font-command"></i>',
+    "HardpointShip": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>',
+    "VersatileShip": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>',
+    "Tactical Relay": '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>'
+  },
+  restrictions: {
+    "Restrictions": "Restrictions",
+    "Initiative": "Initiative",
+    "Agility": "Agility",
+    "Non-Limited": "Non-Limited",
+    " or Squad Including": " or Squad Including",
+    "Ship": "Ship",
+    "Extra": "Extra"
+  },
+  faction: {
+    "Rebel Alliance": "Rebel Alliance",
+    "Galactic Empire": "Galactic Empire",
+    "Scum and Villainy": "Scum and Villainy",
+    "Resistance": "Resistance",
+    "First Order": "First Order",
+    "Galactic Republic": "Galactic Republic",
+    "Separatist Alliance": "Separatist Alliance"
+  },
+  slot: {
+    "Astromech": "Astromech",
+    "Force": "Force",
+    "Bomb": "Bomb",
+    "Cannon": "Cannon",
+    "Crew": "Crew",
+    "Missile": "Missile",
+    "Sensor": "Sensor",
+    "Torpedo": "Torpedo",
+    "Turret": "Turret",
+    "HardpointShip": "Weapon Hardpoint",
+    "VersatileShip": "Versatile Frame",
+    "Hardpoint": "Hardpoint",
+    "Illicit": "Illicit",
+    "Configuration": "Configuration",
+    "Talent": "Talent",
+    "Modification": "Modification",
+    "Gunner": "Gunner",
+    "Device": "Payload",
+    "Tech": "Tech",
+    "Title": "Title",
+    "Tactical Relay": "Tactical Relay",
+    "Command": "Command",
+    "Hyperdrive": "Hyperdrive",
+    "Team": "Team",
+    "Cargo": "Cargo"
+  },
+  sources: {
+    "Second Edition Core Set": "Second Edition Core Set",
+    "Rebel Alliance Conversion Kit": "Rebel Alliance Conversion Kit",
+    "Galactic Empire Conversion Kit": "Galactic Empire Conversion Kit",
+    "Scum and Villainy Conversion Kit": "Scum and Villainy Conversion Kit",
+    "T-65 X-Wing Expansion Pack": "T-65 X-Wing Expansion Pack",
+    "BTL-A4 Y-Wing Expansion Pack": "BTL-A4 Y-Wing Expansion Pack",
+    "TIE/ln Fighter Expansion Pack": "TIE/ln Fighter Expansion Pack",
+    "TIE Advanced x1 Expansion Pack": "TIE Advanced x1 Expansion Pack",
+    "Slave 1 Expansion Pack": "Slave 1 Expansion Pack",
+    "Fang Fighter Expansion Pack": "Fang Fighter Expansion Pack",
+    "Lando's Millennium Falcon Expansion Pack": "Lando's Millennium Falcon Expansion Pack",
+    "Saw's Renegades Expansion Pack": "Saw's Renegades Expansion Pack",
+    "TIE Reaper Expansion Pack": "TIE Reaper Expansion Pack",
+    "ARC-170 Starfighter Expansion": "ARC-170 Starfighter Expansion",
+    "Loose Ships": "Loose Ships",
+    "Fugitives and Collaborators Squadron Pack": "Fugitives and Collaborators Squadron Pack",
+    "First Order Conversion Kit": "First Order Conversion Kit",
+    "M3-A Interceptor Expansion Pack": "M3-A Interceptor Expansion Pack"
+  },
+  ui: {
+    "shipSelectorPlaceholder": "Select a ship",
+    "pilotSelectorPlaceholder": "Select a pilot",
+    upgradePlaceholder: function(translator, slot) {
+      return "No " + (translator('slot', slot)) + " Upgrade";
     },
-    pilotsById: [
-      {
-        name: "Bandit Squadron Pilot",
-        id: 0,
-        unique: true,
-        faction: "Rebel Alliance",
-        ship: "Z-95 Headhunter",
-        skill: 1,
-        points: 3,
-        loadout: 1,
-        slots: []
-      }, {
-        name: "Blue Squadron Escort",
-        id: 1,
-        unique: true,
-        faction: "Rebel Alliance",
-        ship: "X-Wing",
-        skill: 2,
-        points: 5,
-        loadout: 5,
-        slots: ["Astromech", "Configuration", "Torpedo"]
-      }, {
-        name: "Red Squadron Veteran",
-        id: 2,
-        max_per_squad: 2,
-        faction: "Rebel Alliance",
-        ship: "X-Wing",
-        skill: 3,
-        points: 5,
-        loadout: 12,
-        slots: ["Talent", "Astromech", "Torpedo", "Modification", "Configuration"]
-      }, {
-        name: "Gray Squadron Bomber",
-        id: 3,
-        faction: "Rebel Alliance",
-        ship: "Y-Wing",
-        skill: 2,
-        points: 4,
-        loadout: 11,
-        slots: ["Device", "Device", "Astromech", "Modification"]
-      }, {
-        name: "Gold Squadron Veteran",
-        id: 4,
-        unique: true,
-        faction: "Rebel Alliance",
-        ship: "Y-Wing",
-        skill: 3,
-        points: 3,
-        loadout: 9,
-        slots: ["Turret", "Missile", "Gunner", "Astromech", "Modification"],
-        skip: true
-      }, {
-        name: "Jek Porkins",
-        id: 5,
-        unique: true,
-        faction: "Rebel Alliance",
-        ship: "X-Wing",
-        skill: 4,
-        points: 5,
-        loadout: 16,
-        slots: ["Talent", "Astromech", "Torpedo", "Modification", "Configuration"]
-      }, {
-        name: "Academy Pilot",
-        id: 6,
-        max_per_squad: 2,
-        faction: "Galactic Empire",
-        ship: "TIE Fighter",
-        skill: 1,
-        points: 2,
-        loadout: 5,
-        slots: ["Modification"]
-      }, {
-        name: "Obsidian Squadron Pilot",
-        id: 7,
-        max_per_squad: 3,
-        faction: "Galactic Empire",
-        ship: "TIE Fighter",
-        skill: 2,
-        points: 3,
-        loadout: 5,
-        slots: ["Modification"]
-      }, {
-        name: "Black Squadron Ace",
-        id: 8,
-        unique: true,
-        faction: "Galactic Empire",
-        ship: "TIE Fighter",
-        skill: 3,
-        points: 3,
-        loadout: 8,
-        slots: ["Talent", "Talent", "Modification"],
-        skip: true
-      }, {
-        name: "Iden Versio",
-        id: 9,
-        unique: true,
-        faction: "Galactic Empire",
-        ship: "TIE Fighter",
-        skill: 4,
-        charge: 1,
-        points: 4,
-        loadout: 12,
-        slots: ["Talent", "Talent", "Cannon", "Missile", "Modification"]
-      }, {
-        name: "Carida Academy Cadet",
-        id: 10,
-        faction: "Galactic Empire",
-        skill: 1,
-        ship: "TIE/rb Heavy",
-        points: 5,
-        loadout: 17,
-        slots: ["Cannon", "Cannon", "Gunner", "Modification", "Configuration"]
-      }, {
-        name: "Blue Squadron Scout",
-        id: 11,
-        unique: true,
-        faction: "Rebel Alliance",
-        ship: "U-Wing",
-        skill: 2,
-        points: 4,
-        loadout: 7,
-        slots: ["Modification", "Configuration", "Gunner", "Crew", "Sensor"]
-      }, {
-        name: "Heff Tobber",
-        id: 12,
-        unique: true,
-        faction: "Rebel Alliance",
-        ship: "U-Wing",
-        skill: 2,
-        points: 5,
-        loadout: 17,
-        slots: ["Talent", "Sensor", "Crew", "Crew", "Gunner", "Turret", "Modification", "Configuration"]
-      }, {
-        name: "Planetary Sentinel",
-        id: 13,
-        max_per_squad: 2,
-        faction: "Galactic Empire",
-        ship: "TIE Striker",
-        skill: 1,
-        points: 4,
-        loadout: 2,
-        slots: []
-      }, {
-        name: "Black Squadron Scout",
-        id: 14,
-        unique: true,
-        faction: "Galactic Empire",
-        ship: "TIE Striker",
-        skill: 3,
-        points: 4,
-        loadout: 7,
-        slots: ["Talent", "Gunner", "Device"]
-      }, {
-        name: '"Pure Sabacc"',
-        id: 15,
-        unique: true,
-        faction: "Galactic Empire",
-        ship: "TIE Striker",
-        skill: 4,
-        points: 4,
-        loadout: 12,
-        slots: ["Talent", "Sensor", "Device", "Modification", "Modification"]
-      }, {
-        name: "Maarek Stele",
-        id: 16,
-        unique: true,
-        faction: "Galactic Empire",
-        ship: "TIE Advanced",
-        skill: 5,
-        points: 5,
-        loadout: 16,
-        slots: ["Talent", "Talent", "Sensor", "HardpointShip", "Modification", "Modification"]
-      }, {
-        name: "Lieutenant Sai",
-        id: 17,
-        unique: true,
-        faction: "Galactic Empire",
-        ship: "Lambda-Class Shuttle",
-        skill: 3,
-        points: 5,
-        loadout: 16,
-        slots: ["Sensor", "Cannon", "Crew", "Crew", "Modification"]
-      }, {
-        name: "Lieutenant Lorrir",
-        id: 18,
-        unique: true,
-        faction: "Galactic Empire",
-        ship: "TIE Interceptor",
-        skill: 3,
-        points: 4,
-        loadout: 8,
-        slots: ["Talent", "Modification", "Configuration"]
-      }, {
-        name: "Tempest Squadron Pilot",
-        id: 19,
-        max_per_squad: 2,
-        faction: "Galactic Empire",
-        ship: "TIE Advanced",
-        skill: 2,
-        points: 4,
-        loadout: 4,
-        slots: ["Sensor", "Modification", "Modification"]
-      }, {
-        name: "Storm Squadron Ace",
-        id: 20,
-        unique: true,
-        faction: "Galactic Empire",
-        ship: "TIE Advanced",
-        skill: 3,
-        points: 3,
-        loadout: 9,
-        slots: ["Talent", "Sensor", "Missile", "Modification"]
-      }, {
-        name: "Norra Wexley (Y-Wing)",
-        id: 21,
-        unique: true,
-        canonical_name: 'Norra Wexley'.canonicalize(),
-        xws: "norrawexley-btla4ywing",
-        faction: "Rebel Alliance",
-        ship: "Y-Wing",
-        skill: 5,
-        points: 5,
-        loadout: 20,
-        slots: ["Talent", "Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Modification", "Device"]
-      }, {
-        name: "Cavern Angels Zealot",
-        id: 22,
-        unique: true,
-        faction: "Rebel Alliance",
-        ship: "X-Wing",
-        keyword: ["Partisan"],
-        skill: 1,
-        points: 4,
-        loadout: 4,
-        slots: ["Illicit"]
-      }
-    ],
-    upgradesById: [
-      {
-        name: "Servomotor S-Foils",
-        id: 0,
-        points: 0,
-        slot: "Configuration",
-        ship: "X-Wing",
-        modifier_func: function(stats) {
-          stats.actions.push('Boost');
-          stats.actions.push('*Focus');
-          return stats.actions.push('R-> Boost');
-        }
-      }, {
-        name: "Maneuver-Assist MGK-300",
-        id: 1,
-        slot: "Configuration",
-        ship: "TIE/rb Heavy",
-        faction: "Galactic Empire",
-        points: 0,
-        modifier_func: function(stats) {
-          var turn, _i, _results;
-          stats.actions.push('Calculate');
-          stats.actions.push('*Barrel Roll');
-          stats.actions.push('*R-> Calculate');
-          if (stats.maneuvers[3] != null) {
-            _results = [];
-            for (turn = _i = 1; _i < 4; turn = ++_i) {
-              if (stats.maneuvers[3][turn] > 1) {
-                _results.push(stats.maneuvers[3][turn]--);
-              } else {
-                _results.push(void 0);
-              }
-            }
-            return _results;
-          }
-        }
-      }, {
-        name: "Target-Assist MGK-300",
-        id: 2,
-        slot: "Configuration",
-        ship: "TIE/rb Heavy",
-        faction: "Galactic Empire",
-        points: 0,
-        modifier_func: function(stats) {
-          stats.actions.push('Calculate');
-          stats.actions.push('*Rotate Arc');
-          return stats.actions.push('> Calculate');
-        }
-      }, {
-        name: "R2 Astromech",
-        id: 3,
-        unique: true,
-        slot: "Astromech",
-        points: 6,
-        charge: 2
-      }, {
-        name: "R3 Astromech",
-        unique: true,
-        id: 4,
-        slot: "Astromech",
-        points: 3
-      }, {
-        name: "R4 Astromech",
-        id: 5,
-        unique: true,
-        slot: "Astromech",
-        points: 2,
-        restrictions: [["Base", "Small"]],
-        modifier_func: function(stats) {
-          var turn, _i, _ref, _results;
-          if (stats.maneuvers[1] != null) {
-            _results = [];
-            for (turn = _i = 0, _ref = stats.maneuvers[1].length; 0 <= _ref ? _i < _ref : _i > _ref; turn = 0 <= _ref ? ++_i : --_i) {
-              if (turn > 4) {
-                continue;
-              }
-              if (stats.maneuvers[1][turn] > 1) {
-                stats.maneuvers[1][turn]--;
-              }
-              if (stats.maneuvers[2][turn] > 1) {
-                _results.push(stats.maneuvers[2][turn]--);
-              } else {
-                _results.push(void 0);
-              }
-            }
-            return _results;
-          }
-        }
-      }, {
-        name: "R5 Astromech",
-        id: 6,
-        unique: true,
-        slot: "Astromech",
-        points: 4,
-        charge: 2
-      }, {
-        name: "R5-D8",
-        id: 7,
-        unique: true,
-        unique: true,
-        slot: "Astromech",
-        points: 6,
-        charge: 3,
-        faction: "Rebel Alliance"
-      }, {
-        name: "Watchful Astromech",
-        id: 8,
-        unique: true,
-        slot: "Astromech",
-        points: 2
-      }, {
-        name: "BB Astromech",
-        id: 9,
-        unique: true,
-        unique: true,
-        slot: "Astromech",
-        points: 6,
-        charge: 2
-      }, {
-        name: "Composure",
-        id: 10,
-        unique: true,
-        slot: "Talent",
-        points: 1,
-        restrictions: [["Action", "Focus"]]
-      }, {
-        name: "Tierfon Belly Run",
-        id: 11,
-        unique: true,
-        points: 0,
-        slot: "Talent",
-        restrictions: [["Keyword", "Y-Wing"]]
-      }, {
-        name: "Deadeye Shot",
-        id: 12,
-        unique: true,
-        slot: "Talent",
-        points: 1,
-        restrictions: [["Base", "Small", "Medium"]]
-      }, {
-        name: "Marg Sabl Closure",
-        id: 13,
-        unique: true,
-        slot: "Talent",
-        points: 1,
-        restrictions: [["Base", "Small", "Medium"]]
-      }, {
-        name: "Hopeful",
-        id: 14,
-        unique: true,
-        points: 1,
-        slot: "Talent",
-        faction: "Rebel Alliance"
-      }, {
-        name: "Marksmanship",
-        id: 15,
-        unique: true,
-        slot: "Talent",
-        points: 1
-      }, {
-        name: "Daredevil",
-        id: 16,
-        unique: true,
-        slot: "Talent",
-        points: 2,
-        restrictions: [["Action", "W-Boost"], ["Base", "Small"]]
-      }, {
-        name: "Elusive",
-        id: 17,
-        unique: true,
-        slot: "Talent",
-        points: 2,
-        charge: 1,
-        restrictions: [["Base", "Small", "Medium"]]
-      }, {
-        name: "Predator",
-        id: 18,
-        unique: true,
-        slot: "Talent",
-        points: 2
-      }, {
-        name: "Selfless",
-        id: 19,
-        unique: true,
-        slot: "Talent",
-        points: 2,
-        faction: "Rebel Alliance"
-      }, {
-        name: "Crack Shot",
-        id: 20,
-        unique: true,
-        slot: "Talent",
-        points: 3,
-        charge: 1
-      }, {
-        name: "Trick Shot",
-        id: 21,
-        unique: true,
-        slot: "Talent",
-        points: 4
-      }, {
-        name: "Lone Wolf",
-        id: 22,
-        unique: true,
-        slot: "Talent",
-        points: 5,
-        unique: true,
-        recurring: 1,
-        charge: 1
-      }, {
-        name: "Swarm Tactics",
-        id: 23,
-        unique: true,
-        slot: "Talent",
-        points: 5
-      }, {
-        name: "Squad Leader",
-        id: 24,
-        unique: true,
-        slot: "Talent",
-        points: 6,
-        unique: true,
-        modifier_func: function(stats) {
-          if (__indexOf.call(stats.actions, 'R-Coordinate') < 0) {
-            return stats.actions.push('R-Coordinate');
-          }
-        }
-      }, {
-        name: "Outmaneuver",
-        id: 25,
-        unique: true,
-        slot: "Talent",
-        points: 12
-      }, {
-        name: "Ruthless",
-        id: 26,
-        unique: true,
-        slot: "Talent",
-        points: 1,
-        faction: "Galactic Empire"
-      }, {
-        name: "Disciplined",
-        id: 27,
-        unique: true,
-        points: 2,
-        slot: "Talent",
-        faction: "Galactic Empire"
-      }, {
-        name: "Seismic Charges",
-        id: 28,
-        unique: true,
-        slot: "Device",
-        points: 3,
-        charge: 2,
-        applies_condition: 'Seismic Charge'.canonicalize()
-      }, {
-        name: "Proton Bombs",
-        id: 29,
-        unique: true,
-        slot: "Device",
-        points: 4,
-        charge: 2,
-        applies_condition: 'Proton Bomb'.canonicalize()
-      }, {
-        name: "Blazer Bomb",
-        id: 30,
-        unique: true,
-        points: 5,
-        charge: 1,
-        slot: "Device",
-        applies_condition: 'Blazer Bomb'.canonicalize()
-      }, {
-        name: "Conner Nets",
-        id: 31,
-        unique: true,
-        slot: "Device",
-        points: 5,
-        charge: 1,
-        applies_condition: 'Conner Net'.canonicalize()
-      }, {
-        name: "Ion Bombs",
-        id: 32,
-        unique: true,
-        slot: "Device",
-        points: 4,
-        charge: 2,
-        applies_condition: 'Ion Bomb'.canonicalize()
-      }, {
-        name: "Electro-Proton Bomb",
-        id: 33,
-        unique: true,
-        slot: "Device",
-        points: 8,
-        charge: 1,
-        restrictions: [["Action", "Reload"], ["Slot", "Modification"]],
-        validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnUpgradeSlot("Modification");
-        },
-        also_occupies_upgrades: ["Modification"],
-        applies_condition: 'Electro-Proton Bomb'.canonicalize()
-      }, {
-        name: "Dorsal Turret",
-        id: 34,
-        unique: true,
-        slot: "Turret",
-        points: 2,
-        attackt: 2,
-        range: "1-2",
-        modifier_func: function(stats) {
-          if (__indexOf.call(stats.actions, 'Rotate Arc') < 0) {
-            return stats.actions.push('Rotate Arc');
-          }
-        }
-      }, {
-        name: "Ion Cannon Turret",
-        id: 35,
-        unique: true,
-        slot: "Turret",
-        points: 5,
-        attackt: 3,
-        range: "1-2",
-        modifier_func: function(stats) {
-          if (__indexOf.call(stats.actions, 'Rotate Arc') < 0) {
-            return stats.actions.push('Rotate Arc');
-          }
-        }
-      }, {
-        name: "Cluster Missiles",
-        id: 36,
-        unique: true,
-        slot: "Missile",
-        points: 4,
-        attack: 3,
-        range: "1-2",
-        rangebonus: true,
-        charge: 4
-      }, {
-        name: "Homing Missiles",
-        id: 37,
-        unique: true,
-        slot: "Missile",
-        points: 5,
-        attack: 4,
-        range: "2-3",
-        rangebonus: true,
-        charge: 2
-      }, {
-        name: "Weapons Systems Officer",
-        id: 38,
-        unique: true,
-        points: 5,
-        slot: "Gunner"
-      }, {
-        name: "Agile Gunner",
-        id: 39,
-        unique: true,
-        slot: "Gunner",
-        points: 3
-      }, {
-        name: "Suppressive Gunner",
-        id: 40,
-        unique: true,
-        slot: "Gunner",
-        points: 4
-      }, {
-        name: "Targeting Computer",
-        id: 41,
-        slot: "Modification",
-        points: 1,
-        modifier_func: function(stats) {
-          if (__indexOf.call(stats.actions, 'Lock') < 0) {
-            return stats.actions.push('Lock');
-          }
-        }
-      }, {
-        name: "Munitions Failsafe",
-        id: 42,
-        slot: "Modification",
-        points: 1
-      }, {
-        name: "Electronic Baffle",
-        id: 43,
-        slot: "Modification",
-        points: 2
-      }, {
-        name: "Shield Upgrade",
-        id: 44,
-        unique: true,
-        slot: "Modification",
-        points: 8,
-        modifier_func: function(stats) {
-          return stats.shields += 1;
-        }
-      }, {
-        name: "Afterburners",
-        id: 45,
-        unique: true,
-        slot: "Modification",
-        points: 10,
-        charge: 2,
-        restrictions: [["Base", "Small"]]
-      }, {
-        name: "Proton Cannons",
-        id: 46,
-        unique: true,
-        slot: "Cannon",
-        points: 4,
-        attackbull: 4,
-        range: "2-3",
-        rangebonus: true,
-        charge: 2,
-        recurring: 1,
-        restrictions: [["Slot", "Cannon"]],
-        validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnUpgradeSlot("Cannon");
-        },
-        also_occupies_upgrades: ["Cannon"]
-      }, {
-        name: "Ion Cannon",
-        id: 47,
-        unique: true,
-        slot: "Cannon",
-        points: 6,
-        attack: 3,
-        range: "1-3"
-      }, {
-        name: "Tractor Beam",
-        id: 48,
-        unique: true,
-        slot: "Cannon",
-        points: 4,
-        attack: 3,
-        range: "1-3"
-      }, {
-        name: "Ion Torpedoes",
-        id: 49,
-        unique: true,
-        slot: "Torpedo",
-        points: 4,
-        attack: 4,
-        range: "2-3",
-        rangebonus: true,
-        charge: 2,
-        faction: "Rebel Alliance"
-      }, {
-        name: 'GNK "Gonk" Droid',
-        unique: true,
-        id: 50,
-        slot: "Crew",
-        points: 5,
-        charge: 1
-      }, {
-        name: "Perceptive Copilot",
-        unique: true,
-        id: 51,
-        slot: "Crew",
-        points: 8
-      }, {
-        name: "Tactical Officer",
-        id: 52,
-        unique: true,
-        slot: "Crew",
-        points: 3,
-        restrictions: [["Action", "R-Coordinate"]],
-        modifier_func: function(stats) {
-          if (__indexOf.call(stats.actions, 'Coordinate') < 0) {
-            return stats.actions.push('Coordinate');
-          }
-        }
-      }, {
-        name: "Freelance Slicer",
-        id: 53,
-        slot: "Crew",
-        points: 1
-      }, {
-        name: "Collision Detector",
-        id: 54,
-        slot: "Sensor",
-        points: 9,
-        charge: 2
-      }, {
-        name: "Bistan",
-        id: 55,
-        slot: "Gunner",
-        points: 8,
-        unique: true,
-        faction: "Rebel Alliance"
-      }, {
-        name: "Pivot Wing",
-        id: 56,
-        points: 0,
-        slot: "Configuration",
-        ship: "U-Wing"
-      }, {
-        name: "Sensitive Controls",
-        id: 57,
-        points: 0,
-        slot: "Configuration",
-        standardized: true,
-        restrictions: [["Keyword", "Autothrusters"]],
-        modifier_func: function(stats) {
-          return stats.chassis = "Sensitive Controls";
-        }
-      }, {
-        name: "Protectorate Gleb",
-        id: 58,
-        unique: true,
-        points: 6,
-        slot: "Crew",
-        faction: ["Galactic Empire", "First Order", "Scum and Villainy"],
-        modifier_func: function(stats) {
-          if (__indexOf.call(stats.actions, 'R-Coordinate') < 0) {
-            return stats.actions.push('R-Coordinate');
-          }
-        }
-      }, {
-        name: "ISB Slicer",
-        unique: true,
-        id: 59,
-        slot: "Crew",
-        points: 1,
-        faction: "Galactic Empire"
-      }, {
-        name: "Tactical Scrambler",
-        unique: true,
-        id: 60,
-        slot: "Modification",
-        points: 2,
-        restrictions: [["Base", "Medium", "Large"]]
-      }, {
-        name: "Fire-Control System",
-        unique: true,
-        id: 61,
-        slot: "Sensor",
-        points: 2
-      }, {
-        name: "Plasma Torpedoes",
-        unique: true,
-        id: 62,
-        slot: "Torpedo",
-        points: 7,
-        attack: 3,
-        range: "2-3",
-        rangebonus: true,
-        charge: 2
-      }, {
-        name: "Feedback Array",
-        id: 63,
-        slot: "Illicit",
-        points: 4
-      }
-    ],
-    conditionsById: [
-      {
-        name: 'Zero Condition',
-        id: 0
-      }, {
-        name: 'Suppressive Fire',
-        id: 1,
-        unique: true
-      }, {
-        name: 'Hunted',
-        id: 2,
-        unique: true
-      }, {
-        name: 'Listening Device',
-        id: 3,
-        unique: true
-      }, {
-        name: 'Optimized Prototype',
-        id: 4,
-        unique: true
-      }, {
-        name: 'I\'ll Show You the Dark Side',
-        id: 5,
-        unique: true
-      }, {
-        name: 'Proton Bomb',
-        id: 6
-      }, {
-        name: 'Seismic Charge',
-        id: 7
-      }, {
-        name: 'Bomblet',
-        id: 8
-      }, {
-        name: 'Loose Cargo',
-        id: 9
-      }, {
-        name: 'Conner Net',
-        id: 10
-      }, {
-        name: 'Proximity Mine',
-        id: 11
-      }, {
-        name: 'Rattled',
-        id: 12,
-        unique: true
-      }, {
-        name: 'DRK-1 Probe Droid',
-        id: 13
-      }, {
-        name: 'Buzz Droid Swarm',
-        id: 14
-      }, {
-        name: 'It\'s the Resistance',
-        id: 15
-      }, {
-        name: 'Electro-Proton Bomb',
-        id: 16
-      }, {
-        name: 'Decoyed',
-        id: 17,
-        unique: true
-      }, {
-        name: 'Compromising Intel',
-        id: 18,
-        unique: true
-      }, {
-        name: 'Cluster Mine',
-        id: 19
-      }, {
-        name: 'Ion Bomb',
-        id: 20
-      }, {
-        name: 'Concussion Bomb',
-        id: 21
-      }, {
-        name: 'Thermal Detonator',
-        id: 22
-      }, {
-        name: 'Sensor Buoy',
-        id: 23
-      }, {
-        name: 'Fearful Prey',
-        id: 24,
-        unique: true
-      }, {
-        name: 'You Should Thank Me',
-        id: 25
-      }, {
-        name: 'You\'d Better Mean Business',
-        id: 26
-      }, {
-        name: 'Spare Parts',
-        id: 27
-      }, {
-        name: 'Electro-Chaff Cloud',
-        id: 28
-      }, {
-        name: 'Tracking Torpedoes',
-        id: 29
-      }, {
-        name: 'False Friend',
-        id: 30,
-        unique: true
-      }, {
-        name: 'Trials of the Darksaber',
-        id: 31,
-        unique: true
-      }, {
-        name: 'Blazer Bomb',
-        id: 32
-      }, {
-        name: 'Merciless Pursuit',
-        id: 33
-      }, {
-        name: 'Marked for Elimination',
-        id: 34,
-        unique: true
-      }, {
-        name: 'Clan Wren Commandos',
-        id: 35
-      }, {
-        name: 'Nite Owl Commandos',
-        id: 36
-      }, {
-        name: 'Death Watch Commandos',
-        id: 37
-      }, {
-        name: 'Imperial Super Commandos',
-        id: 38
-      }, {
-        name: 'Mandalorian Super Commandos',
-        id: 39
-      }, {
-        name: 'Guarded',
-        id: 40
-      }
-    ],
-    chassisById: [
-      {
-        name: "Hope",
-        id: 0
-      }, {
-        name: "Autothrusters",
-        id: 1
-      }, {
-        name: "Microthrusters",
-        id: 2
-      }, {
-        name: "Sensor Blindspot",
-        id: 3
-      }, {
-        name: "Stygium Array",
-        id: 4
-      }, {
-        name: "Experimental Scanners",
-        id: 5
-      }, {
-        name: "Full Throttle",
-        id: 6
-      }, {
-        name: "Nimble Bomber",
-        id: 7
-      }, {
-        name: "Weapon Hardpoint",
-        id: 8
-      }, {
-        name: "Advanced Targeting Computer",
-        id: 9
-      }, {
-        name: "Vectored Thrusters",
-        id: 10
-      }, {
-        name: "Advanced Fire Control",
-        id: 11
-      }, {
-        name: "Sensitive Controls",
-        id: 12
-      }, {
-        name: "Spacetug Tractor Array",
-        id: 13
-      }, {
-        name: "Concordia Faceoff",
-        id: 14
-      }, {
-        name: "Locked and Loaded",
-        id: 15
-      }, {
-        name: "Tail Gun",
-        id: 16
-      }, {
-        name: "Advanced Droid Brain",
-        id: 17
-      }, {
-        name: "Vectored Cannons",
-        id: 18
-      }, {
-        name: "Networked Calculations",
-        id: 19
-      }, {
-        name: "Independent Calculations",
-        id: 20
-      }, {
-        name: "Linked Battery",
-        id: 21
-      }, {
-        name: "Heavy Weapon Turret",
-        id: 22
-      }, {
-        name: "Refined Gyrostabilizers",
-        id: 23
-      }, {
-        name: "Rigged Energy Cells",
-        id: 24
-      }, {
-        name: "Co-Pilot",
-        id: 25
-      }, {
-        name: "Controlled Ailerons",
-        id: 26
-      }, {
-        name: "Comms Shuttle",
-        id: 27
-      }, {
-        name: "Dead to Rights",
-        id: 28
-      }, {
-        name: "Pursuit Craft",
-        id: 29
-      }, {
-        name: "Adaptive Ailerons",
-        id: 30
-      }, {
-        name: "Fire Convergence",
-        id: 31
-      }, {
-        name: "Networked Aim",
-        id: 32
-      }, {
-        name: "Fine-Tuned Thrusters",
-        id: 33
-      }, {
-        name: "Explosion with Wings",
-        id: 34
-      }, {
-        name: "Plated Hull",
-        id: 35
-      }, {
-        name: "Pinpoint Tractor Array",
-        id: 36
-      }, {
-        name: "Fine-Tuned Controls",
-        id: 37
-      }, {
-        name: "Notched Stabilizers",
-        id: 38
-      }, {
-        name: "Rotating Cannons",
-        id: 39
-      }, {
-        name: "Twin Ion Engines",
-        id: 40
-      }, {
-        name: "Versatile Frame",
-        id: 41
-      }, {
-        name: "Pursuit Thrusters",
-        id: 42
-      }, {
-        name: "Devastating Barrage",
-        id: 43
-      }, {
-        name: "Intuitive Interface",
-        id: 44
-      }, {
-        name: "Intuitive Controls",
-        id: 45
-      }
-    ],
-    quickbuildsById: [
-      {
-        id: 0
-      }
-    ]
+    "modificationPlaceholder": "No Modification",
+    "titlePlaceholder": "No Title",
+    upgradeHeader: function(translator, slot) {
+      return "" + (translator('slot', slot)) + " Upgrade";
+    },
+    "unreleased": "unreleased",
+    "epic": "epic",
+    "Quickbuild": "Quick Build",
+    "limited": "limited",
+    "Unreleased content warning": "This squad uses unreleased content!",
+    "Broken squad link warning": "It appears that you followed a broken link. No squad could be loaded!",
+    "Collection warning": "You cannot field this list with your collection!",
+    "Ship number warning": "A tournament legal squad must contain 3-8 ships!",
+    "Multi-Faction warning": "Multi-Faction Lists are NEVER tournament legal!",
+    "XWS Import Dialog": "Import your list via XWS into YASB.<br><i>XWS is a common format to share lists between applications.</i>",
+    "Copy below simple text": "<p>Copy the below and paste it elsewhere.</p>",
+    "Copy below markdown": "<p>Copy the below and paste it into your reddit post.</p><p>Make sure that the post editor is set to markdown mode.</p>",
+    "Copy below TTS": "<p>Copy the below and paste it into the Tabletop Simulator.</p>",
+    "Copy below BBCode": "<p>Copy the BBCode below and paste it into your forum post.</p>",
+    "Copy below HTML": "<p>Copy the below and paste it elsewhere.</p>",
+    "Copy below XWS": "<p>Copy and paste this into an XWS-compliant application.</p>",
+    "Use INI prefix": "Put INI as prefix in front of names.",
+    "Choose obstacles dialog": "Choose up to three obstacles, to include in the permalink for use in external programs",
+    "Mark obstacles": "Mark the three obstacles you are using.",
+    "Scan QR-Code": "Scan to open this list in the builder",
+    "View in YASB": "View in YASB 2",
+    "YASB advertisment": "YASB 2 is a simple, fast, and easy to use squad builder for X-Wing Miniatures by Fantasy Flight Games.",
+    collectionContentShips: function(translator, number) {
+      return "You have " + number + " ship " + (number === 1 ? 'model' : 'models') + " in your collection.";
+    },
+    collectionContentShipsAndPilots: function(translator, data) {
+      return "You have " + data[0] + " ship " + (data[0] === 1 ? 'model' : 'models') + " and " + data[1] + " pilot " + (data[1] === 1 ? 'card' : 'cards') + " in your collection.";
+    },
+    collectionContentUpgrades: function(translator, number) {
+      return "You have " + number + " in your collection.";
+    },
+    varPointCostsPoints: function(translator, points) {
+      return "<b>Point cost:</b> " + points + " when ";
+    },
+    varPointCostsConditionAgility: function(translator, values) {
+      return "agility is " + values;
+    },
+    varPointCostsConditionIni: function(translator, values) {
+      return "initiative is " + values;
+    },
+    varPointCostsConditionBase: function(translator, values) {
+      return "base size is small, medium, large or huge";
+    },
+    "Missing Item List:": "To field this squad you need the following additional items:",
+    pilotFlyingShip: function(translator, pilot, ship) {
+      return "Pilot " + pilot + " flying " + ship;
+    },
+    "Placeholder Textsearch Browser": "Search for name, text or ship",
+    noXYselected: function(translator, xy) {
+      return "No " + (translator('ui', xy)) + " selected";
+    },
+    "Select a card": "Select a card from the list at the left.",
+    yourXYsquads: function(translator, faction) {
+      return "Your " + (translator('faction', faction)) + " Squads";
+    },
+    reallyDeleteSquadXY: function(translator, squadname) {
+      return "Really delete " + squadname + "?";
+    },
+    "No saved squads": "Nothing to see here. Go save a squad!",
+    "name required": "A name is required",
+    "Name in use": "You already have a squad with that name",
+    "select OAuth provider": "Select one of the OAuth providers below to log in and start saving squads.",
+    "OAuth explanation": "<p>\n    <a href=\"http://en.wikipedia.org/wiki/OAuth\" target=\"_blank\">OAuth</a> is an authorization system which lets you prove your identity at a web site without having to create a new account.  Instead, you tell some provider with whom you already have an account (e.g. Google or Facebook) to prove to this web site that you say who you are.  That way, the next time you visit, this site remembers that you're that user from Google.\n</p>\n<p>\n    The best part about this is that you don't have to come up with a new username and password to remember.  And don't worry, I'm not collecting any data from the providers about you.  I've tried to set the scope of data to be as small as possible, but some places send a bunch of data at minimum.  I throw it away.  All I look at is a unique identifier (usually some giant number).\n</p>\n<p>\n    For more information, check out this <a href=\"http://hueniverse.com/oauth/guide/intro/\" target=\"_blank\">introduction to OAuth</a>.\n</p>",
+    "Intro Card YASB": "<h2>Fly Better Galactic Conquest Builder</h2>\n<p>This builder is used for the Galactic Conquest Narrative X-Wing event. Go to FlyBetterpodcast.com for more information on how to play.</p>\n<p>This is Mission 2</p>\n<h5>Credits</h5>\n<p>Fork of <a href=\"https://yasb.app/\">YASB.APP</a>.</p>\n<p>YASB is updated and maintained by Stephen Kim.</p>",
+    "Continue to OAuth provider": "This will open a new window to let you authenticate with the chosen provider. You may have to allow pop ups for this site.",
+    "iOS requires cross-site control": "Due to a new feature in iOS systems OAuth won't work unless you enable \"cross-site control\".",
+    "login in progress": "OAuth login is in progress. Please finish authorization at the specified provider using the window that was just created.",
+    "Squads reloaded": "All squads of that faction have been reloaded.",
+    "Sure to delete?": "Are you sure you want to delete this squad?",
+    "Unsaved Changes Warning": "You have not saved changes to this squad.  Do you want to go back and save?",
+    adds: function(translator, data) {
+      return "Adds: " + (translator('ui', data));
+    },
+    removes: function(translator, data) {
+      return "Removes: " + (translator('ui', data));
+    },
+    "Less upgrades": "Fewer upgrades"
+  },
+  singular: {
+    'pilots': 'Pilot',
+    'modifications': 'Modification',
+    'titles': 'Title',
+    'ships': 'Ship'
+  },
+  types: {
+    'Pilot': 'Pilot',
+    'Modification': 'Modification',
+    'Title': 'Title',
+    'Ship': 'Ship'
+  },
+  rulestypes: {
+    'glossary': 'Glossary',
+    'faq': 'FAQ'
+  },
+  action: {
+    'Boost': 'Boost'
+  }
+};
+
+if (exportObj.cardLoaders == null) {
+  exportObj.cardLoaders = {};
+}
+
+exportObj.cardLoaders.English = function() {
+  var chassis_translations, condition_translations, data, name, pilot_translations, upgrade_translations;
+  exportObj.cardLanguage = 'English';
+  exportObj.renameShip("YT-1300", "Modified YT-1300 Light Freighter");
+  exportObj.renameShip("StarViper", "StarViper-class Attack Platform");
+  exportObj.renameShip("Scurrg H-6 Bomber", "Scurrg H-6 Bomber");
+  exportObj.renameShip("YT-2400", "YT-2400 Light Freighter");
+  exportObj.renameShip("Auzituck Gunship", "Auzituck Gunship");
+  exportObj.renameShip("Kihraxz Fighter", "Kihraxz Fighter");
+  exportObj.renameShip("Sheathipede-Class Shuttle", "Sheathipede-class Shuttle");
+  exportObj.renameShip("Quadjumper", "Quadrijet Transfer Spacetug");
+  exportObj.renameShip("Firespray-31", "Firespray-class Patrol Craft");
+  exportObj.renameShip("TIE Fighter", "TIE/ln Fighter");
+  exportObj.renameShip("Y-Wing", "BTL-A4 Y-Wing");
+  exportObj.renameShip("TIE Advanced", "TIE Advanced x1");
+  exportObj.renameShip("Alpha-Class Star Wing", "Alpha-class Star Wing");
+  exportObj.renameShip("U-Wing", "UT-60D U-Wing");
+  exportObj.renameShip("TIE Striker", "TIE/sk Striker");
+  exportObj.renameShip("B-Wing", "A/SF-01 B-Wing");
+  exportObj.renameShip("TIE Defender", "TIE/D Defender");
+  exportObj.renameShip("TIE Bomber", "TIE/sa Bomber");
+  exportObj.renameShip("TIE Punisher", "TIE/ca Punisher");
+  exportObj.renameShip("Aggressor", "Aggressor Assault Fighter");
+  exportObj.renameShip("G-1A Starfighter", "G-1A Starfighter");
+  exportObj.renameShip("VCX-100", "VCX-100 Light Freighter");
+  exportObj.renameShip("YV-666", "YV-666 Light Freighter");
+  exportObj.renameShip("TIE Advanced Prototype", "TIE Advanced v1");
+  exportObj.renameShip("Lambda-Class Shuttle", "Lambda-class T-4a Shuttle");
+  exportObj.renameShip("TIE Phantom", "TIE/ph Phantom");
+  exportObj.renameShip("VT-49 Decimator", "VT-49 Decimator");
+  exportObj.renameShip("TIE Aggressor", "TIE/ag Aggressor");
+  exportObj.renameShip("K-Wing", "BTL-S8 K-Wing");
+  exportObj.renameShip("ARC-170", "ARC-170 Starfighter");
+  exportObj.renameShip("Attack Shuttle", "Attack Shuttle");
+  exportObj.renameShip("X-Wing", "T-65 X-Wing");
+  exportObj.renameShip("HWK-290", "HWK-290 Light Freighter");
+  exportObj.renameShip("A-Wing", "RZ-1 A-Wing");
+  exportObj.renameShip("Fang Fighter", "Fang Fighter");
+  exportObj.renameShip("Z-95 Headhunter", "Z-95-AF4 Headhunter");
+  exportObj.renameShip("M12-L Kimogila Fighter", "M12-L Kimogila Fighter");
+  exportObj.renameShip("E-Wing", "E-Wing");
+  exportObj.renameShip("TIE Interceptor", "TIE/in Interceptor");
+  exportObj.renameShip("Lancer-Class Pursuit Craft", "Lancer-class Pursuit Craft");
+  exportObj.renameShip("TIE Reaper", "TIE Reaper");
+  exportObj.renameShip("M3-A Interceptor", "M3-A Interceptor");
+  exportObj.renameShip("JumpMaster 5000", "JumpMaster 5000");
+  exportObj.renameShip("Customized YT-1300", "Customized YT-1300 Light Freighter");
+  exportObj.renameShip("Escape Craft", "Escape Craft");
+  exportObj.renameShip("TIE/FO Fighter", "TIE/fo Fighter");
+  exportObj.renameShip("TIE/SF Fighter", "TIE/sf Fighter");
+  exportObj.renameShip("Upsilon-Class Command Shuttle", "Upsilon-Class Command Shuttle");
+  exportObj.renameShip("TIE/VN Silencer", "TIE/vn Silencer");
+  exportObj.renameShip("T-70 X-Wing", "T-70 X-Wing");
+  exportObj.renameShip("RZ-2 A-Wing", "RZ-2 A-Wing");
+  exportObj.renameShip("MG-100 StarFortress", "MG-100 StarFortress");
+  exportObj.renameShip("Mining Guild TIE Fighter", "Mining Guild TIE Fighter");
+  exportObj.renameShip("Scavenged YT-1300", "Scavenged YT-1300");
+  exportObj.renameShip("TIE/WI Whisper", "TIE/wi Whisper Modified Interceptor");
+  exportObj.renameShip("TIE/Se Bomber", "TIE/se Bomber");
+  exportObj.renameShip("TIE/Ba Interceptor", "TIE/ba Interceptor");
+  pilot_translations = {
+    "Jek Porkins": {
+      display_name: "Jek Porkins",
+      text: "After you receive a stress token, you may roll 1 attack die to remove it. On a %HIT% result, suffer 1 %HIT% damage."
+    },
+    "Iden Versio": {
+      display_name: "Iden Versio",
+      text: "Before a friendly TIE/ln fighter at range 0-1 would suffer 1 or more damage, you may spend 1 %CHARGE%. If you do, prevent that damage."
+    },
+    '"Pure Sabacc"': {
+      display_name: "“Pure Sabacc”",
+      text: "While you perform an attack, if you have 1 or fewer damage cards, you may roll 1 additional attack die."
+    },
+    "Maarek Stele": {
+      display_name: "Maarek Stele",
+      text: "While you perform an attack, if the defender would be dealt a faceup damage card, instead draw 3 damage cards, choose 1, and discard the rest. "
+    },
+    "Heff Tobber": {
+      display_name: "Heff Tobber",
+      text: "After an enemy ship executes a maneuver, if it is at range 0, you may perform an action."
+    },
+    "Norra Wexley (Y-Wing)": {
+      display_name: "Norra Wexley",
+      text: "While you defend, if there is an enemy ship at range 0-1, add 1 %EVADE% result to your dice results."
+    },
+    "Lieutenant Sai": {
+      display_name: "Lieutenant Sai",
+      text: "After you a perform a %COORDINATE% action, if the ship you chose performed an action on your action bar, you may perform that action."
+    },
+    "Lieutenant Lorrir": {
+      text: "While you barrel roll, you <b>must</b> use the (%BANKLEFT% or %BANKRIGHT%) template instead of the %STRAIGHT% template. "
+    }
   };
-};
-
-exportObj.setupCommonCardData = function(basic_cards) {
-  var card, cards, chassis, chassis_data, chassis_name, condition, condition_data, condition_name, e, expansion, i, name, pilot, pilot_data, pilot_name, quickbuild_count, quickbuild_data, ship_data, ship_name, source, upgrade, upgrade_data, upgrade_name, _base, _base1, _base10, _base2, _base3, _base4, _base5, _base6, _base7, _base8, _base9, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _name, _name1, _name10, _name2, _name3, _name4, _name5, _name6, _name7, _name8, _name9, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u;
-  _ref = basic_cards.pilotsById;
-  for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-    pilot_data = _ref[i];
-    if (pilot_data.id !== i) {
-      throw new Error("ID mismatch: pilot at index " + i + " has ID " + pilot_data.id);
+  upgrade_translations = {
+    "Servomotor S-Foils": {
+      display_name: "Servomotor S-Foils",
+      text: "<strong>Closed: </strong><i>%BOOST%, %FOCUS% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <r>%BOOST%</r></i>%LINEBREAK% While you perform a primary attack, roll 1 fewer attack die.%LINEBREAK%Before you activate, you may flip this card.%LINEBREAK%<strong>Open:</strong> Before you activate, you may flip this card."
+    },
+    "Maneuver-Assist MGK-300": {
+      text: "Reduce the difficulty of your 3 straight (%STRAIGHT%) and bank (%BANKLEFT% or %BANKRIGHT%) maneuvers."
+    },
+    "Target-Assist MGK-300": {
+      text: "Before you engage, if you have no green tokens and you are not stressed, gain 1 calculate token for each enemy ship at range 2-3 in your firing arc, to a maximum of 2."
+    },
+    "R2 Astromech": {
+      display_name: "R2 Astromech",
+      text: "After you reveal your dial, you may spend 1 %CHARGE% and gain 1 disarm token to recover 1 shield."
+    },
+    "R3 Astromech": {
+      display_name: "R3 Astromech",
+      text: "You can maintain up to 2 locks. Each lock must be on a different object.%LINEBREAK%After you perform a %LOCK% action, you may acquire a lock."
+    },
+    "R4 Astromech": {
+      display_name: "R4 Astromech",
+      text: "Decrease the difficulty of your speed 1-2 basic maneuvers (%TURNLEFT%, %BANKLEFT%, %STRAIGHT%, %BANKRIGHT%, %TURNRIGHT%)."
+    },
+    "R5 Astromech": {
+      display_name: "R5 Astromech",
+      text: "<strong>Action:</strong> Spend 1 %CHARGE% to repair 1 facedown damage card.%LINEBREAK%<strong>Action:</strong> Repair 1 faceup <strong>Ship</strong> damage card."
+    },
+    "R5-D8": {
+      display_name: "R5-D8",
+      text: "<strong>Action:</strong> Spend 1 %CHARGE% to repair 1 facedown damage card.%LINEBREAK%<strong>Action:</strong> Repair 1 faceup <strong>Ship</strong> damage card."
+    },
+    "BB Astromech": {
+      display_name: "BB Astromech",
+      text: "During the System Phase, you may spend 1 %CHARGE% to perform a %BARRELROLL% action. %LINEBREAK% <i>Errata (since rules reference 1.4.2): Changed the effect timing to the System Phase</i>"
+    },
+    "Composure": {
+      display_name: "Composure",
+      text: "After you fail an action, if you have no green tokens, you may perform a %FOCUS% action. If you do, you cannot perform additional actions this round. %LINEBREAK% <i>Errata (since rules reference 1.1.0): Added \"If you do, you cannot perform additional actions this round.\"</i>"
+    },
+    "Tierfon Belly Run": {
+      text: "You can perform special attacks even while at range 0 of asteroids. %LINEBREAK% While you defend, if you are at range 0 of an obstacle, attack dice cannot be rerolled."
+    },
+    "Hopeful": {
+      text: "After another friendly ship at range 0-3 is destroyed, if that ship is limited or has the <strong>Hopeful</strong> upgrade, you may perform a %FOCUS% or %BOOST% action."
+    },
+    "Marksmanship": {
+      display_name: "Marksmanship",
+      text: "While you perform an attack, if the defender is in your %BULLSEYEARC%, you may change 1 %HIT% result to a %CRIT% result."
+    },
+    "Daredevil": {
+      display_name: "Daredevil",
+      text: "While you perform a white %BOOST% action, you may treat it as red to use the [1 %TURNLEFT%] or [1 %TURNRIGHT%] template instead."
+    },
+    "Elusive": {
+      display_name: "Elusive",
+      text: "While you defend, you may spend 1 %CHARGE% to reroll 1 defense die.%LINEBREAK%After you fully execute a red maneuver, recover 1 %CHARGE%."
+    },
+    "Predator": {
+      display_name: "Predator",
+      text: "While you perform a primary attack, if the defender is in your %BULLSEYEARC%, you may reroll 1 attack die."
+    },
+    "Selfless": {
+      display_name: "Selfless",
+      text: "While another friendly ship at range 0-1 defends, before the Neutralize Results step, if you are in the attack arc, you may suffer 1 %CRIT% damage to cancel 1 %CRIT% result."
+    },
+    "Crack Shot": {
+      display_name: "Crack Shot",
+      text: "While you perform a primary attack, if the defender is in your %BULLSEYEARC%, before the Neutralize Results step, you may spend 1 %CHARGE% to cancel 1 %EVADE% result."
+    },
+    "Trick Shot": {
+      display_name: "Trick Shot",
+      text: "While you perform an attack that is obstructed by an obstacle, roll 1 additional attack die."
+    },
+    "Lone Wolf": {
+      display_name: "Lone Wolf",
+      text: "While you defend or perform an attack, if there are no other friendly ships at range 0-2, you may spend 1 %CHARGE% to reroll 1 of your dice."
+    },
+    "Swarm Tactics": {
+      display_name: "Swarm Tactics",
+      text: "At the start of the Engagement Phase, you may choose 1 friendly ship at range 1. If you do, that ship treats its initiative as equal to yours until the end of the round."
+    },
+    "Squad Leader": {
+      display_name: "Squad Leader",
+      text: "While you coordinate, the ship you choose can perform an action only if that action is also on your action bar."
+    },
+    "Outmaneuver": {
+      display_name: "Outmaneuver",
+      text: "While you perform a %FRONTARC% attack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense die."
+    },
+    "Ruthless": {
+      display_name: "Ruthless",
+      text: "While you perform an attack, you may choose another friendly ship at range 0-1 of the defender. If you do, that ship suffers 1 %HIT% damage and you may change 1 of your die results to a %HIT% result."
+    },
+    "Disciplined": {
+      text: "After another friendly ship at range 0-3 is destroyed, if that ship is limited or has the <strong>Disciplined</strong> upgrade, you may perform a %LOCK% or %BARRELROLL% action."
+    },
+    "Seismic Charges": {
+      display_name: "Seismic Charges",
+      text: "<strong>Bomb</strong>%LINEBREAK%During the System Phase, you may spend 1 %CHARGE% to drop a Seismic Charge with the [1 %STRAIGHT%] template."
+    },
+    "Proton Bombs": {
+      display_name: "Proton Bombs",
+      text: "<strong>Bomb</strong>%LINEBREAK%During the System Phase, you may spend 1 %CHARGE% to drop a Proton Bomb using the [1 %STRAIGHT%] template."
+    },
+    "Blazer Bomb": {
+      text: "<strong>Bomb</strong>%LINEBREAK% During the System Phase, you may spend 1 %CHARGE% to drop a Blazer Bomb using the [1 %STRAIGHT%] template."
+    },
+    "Conner Nets": {
+      display_name: "Conner Nets",
+      text: "<strong>Mine</strong>%LINEBREAK%During the System Phase, you may spend 1 %CHARGE% to drop a Conner Net using the [1 %STRAIGHT%] template.%LINEBREAK%This card's %CHARGE% cannot be recovered."
+    },
+    "Ion Bombs": {
+      display_name: "Ion Bombs",
+      text: "<strong>Bomb</strong>%LINEBREAK% During the System Phase, you may spend 1 %CHARGE% to drop an Ion Bomb using the [1 %STRAIGHT%] template."
+    },
+    "Electro-Proton Bomb": {
+      display_name: "Electro-Proton Bomb",
+      text: "<strong>Bomb</strong>%LINEBREAK%During the System Phase, you may spend 1 %CHARGE% to drop an Electro-Proton Bomb with the [1 %STRAIGHT%] template. Then place 1 fuse marker on that device. %LINEBREAK%This card's %CHARGE% cannot be recovered."
+    },
+    "Dorsal Turret": {
+      display_name: "Dorsal Turret",
+      text: "<strong>Attack</strong>"
+    },
+    "Ion Cannon": {
+      display_name: "Ion Cannon",
+      text: "<strong>Attack:</strong> If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."
+    },
+    "Ion Cannon Turret": {
+      display_name: "Ion Cannon Turret",
+      text: "<strong>Attack:</strong> If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."
+    },
+    "Cluster Missiles": {
+      display_name: "Cluster Missiles",
+      text: "<strong>Attack (%LOCK%):</strong> Spend 1 %CHARGE%. After this attack, you may perform this attack as a bonus attack against a different target at range 0-1 of the defender, ignoring the %LOCK% requirement."
+    },
+    "Homing Missiles": {
+      display_name: "Homing Missiles",
+      text: "<strong>Attack (%LOCK%):</strong> Spend 1 %CHARGE%. After you declare the defender, the defender may choose to suffer 1 %HIT% damage. If it does, skip the Attack and Defense Dice steps and the attack is treated as hitting."
+    },
+    "Agile Gunner": {
+      display_name: "Agile Gunner",
+      text: "During the End Phase, you may rotate your %SINGLETURRETARC% indicator."
+    },
+    "Suppressive Gunner": {
+      text: "While you perform an attack, you may spend 1 %FOCUS% result. If you do, the defender gains 1 deplete token unless it chooses to suffer 1 %HIT% damage."
+    },
+    "Munitions Failsafe": {
+      display_name: "Munitions Failsafe",
+      text: "While you perform a %TORPEDO% or %MISSILE% attack, after rolling attack dice, you may cancel all dice results to recover 1 %CHARGE% you spent as a cost for the attack."
+    },
+    "Electronic Baffle": {
+      display_name: "Electronic Baffle",
+      text: "During the End Phase, you may suffer 1 %HIT% damage to remove 1 red token."
+    },
+    "Afterburners": {
+      display_name: "Afterburners",
+      text: "After you fully execute a speed 3-5 maneuver, you may spend 1 %CHARGE% to perform a %BOOST% action, even while stressed."
+    },
+    "Proton Cannons": {
+      text: "<strong>Attack:</strong> Spend 2 %CHARGE%. Change 1 %FOCUS% or %HIT% result to a %CRIT% result."
+    },
+    "Tractor Beam": {
+      display_name: "Tractor Beam",
+      text: "<strong>Attack:</strong> If this attack hits, all %HIT%/%CRIT% results inflict tractor tokens instead of damage."
+    },
+    "Weapons Systems Officer": {
+      text: "After you perform a special attack with the %LOCK% requirement, you may acquire a lock on the defender."
+    },
+    "Ion Torpedoes": {
+      display_name: "Ion Torpedoes",
+      text: "<strong>Attack (%LOCK%):</strong> Spend 1 %CHARGE%. If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."
+    },
+    'GNK "Gonk" Droid': {
+      display_name: "GNK “Gonk” Droid",
+      text: "<strong>Setup:</strong> Lose 1 %CHARGE%.%LINEBREAK%<strong>Action:</strong> Recover 1 %CHARGE%.%LINEBREAK%<strong>Action:</strong> Spend 1 %CHARGE% to recover 1 shield."
+    },
+    "Perceptive Copilot": {
+      display_name: "Perceptive Copilot",
+      text: "After you perform a %FOCUS% action, gain 1 focus token."
+    },
+    "Tactical Officer": {
+      display_name: "Tactical Officer",
+      text: "<i class = flavor_text>In the chaos of a starfighter battle, a single order can mean the difference between a victory and a massacre.</i>"
+    },
+    "Freelance Slicer": {
+      display_name: "Freelance Slicer",
+      text: "While you defend, before attack dice are rolled, you may spend a lock you have on the attacker to roll 1 attack die. If you do, the attacker gains 1 jam token. Then, on a %HIT% or %CRIT% result, gain 1 jam token."
+    },
+    "Collision Detector": {
+      display_name: "Collision Detector",
+      text: "While you boost or barrel roll, you can move through and overlap obstacles.%LINEBREAK%After you move through or overlap an obstacle, you may spend 1 %CHARGE% to ignore its effects until the end of the round."
+    },
+    "Watchful Astromech": {
+      text: "After you perform a %RELOAD% or %ROTATEARC% action, if you are in an enemy ship's firing arc, you may perform a red %CALCULATE% action."
+    },
+    "Bistan": {
+      display_name: "Bistan",
+      text: "After you perform a primary attack, if you are focused, you may perform a bonus %SINGLETURRETARC% attack against a ship you have not already attacked this round."
+    },
+    "Pivot Wing": {
+      display_name: "Pivot Wing",
+      text: "<strong>Closed: </strong>While you defend, roll 1 fewer defense die.%LINEBREAK%After you execute a [0 %STOP%] maneuver, you may rotate your ship 90º or 180º.%LINEBREAK%Before you activate, you may flip this card.%LINEBREAK%<strong>Open:</Strong> Before you activate, you may flip this card."
+    },
+    "Sensitive Controls": {
+      text: "Replace your <strong>Autothrusters</strong> ship ability with the following: %LINEBREAK% <strong>Sensitive Controls</strong>: During the System Phase, you may perform a red %BARRELROLL% or red %BOOST% action."
+    },
+    "Protectorate Gleb": {
+      text: "After you coordinate a friendly ship, you may transfer 1 orange or red token to the ship you coordinated. %LINEBREAK% <i>Errata (RR: 1.2.0 [06/14/2021]): Added restriction stipulating friendly ship</i>"
+    },
+    "ISB Slicer": {
+      display_name: "ISB Slicer",
+      text: "During the End Phase, enemy ships at range 1-2 cannot remove jam tokens."
+    },
+    "Tactical Scrambler": {
+      display_name: "Tactical Scrambler",
+      text: "While you obstruct an enemy ship's attack, the defender rolls 1 additional defense die."
+    },
+    "Fire-Control System": {
+      display_name: "Fire-Control System",
+      text: "While you perform an attack, if you have a lock on the defender, you may reroll 1 attack die. If you do, you cannot spend your lock during this attack."
+    },
+    "Plasma Torpedoes": {
+      display_name: "Plasma Torpedoes",
+      text: "<strong>Attack (%LOCK%):</strong> Spend 1 %CHARGE%. During the Neutralize Results step, %CRIT% results are cancelled before %HIT% results. After this attack hits, the defender loses 1 shield."
+    },
+    "Feedback Array": {
+      display_name: "Feedback Array",
+      text: "Before you engage, you may gain 1 ion token and 1 disarm token. If you do, each ship at range 0 suffers 1 %HIT% damage."
+    }
+  };
+  condition_translations = {
+    'Suppressive Fire': {
+      text: 'While you perform an attack against a ship other than <strong>Captain Rex</strong>, roll 1 fewer attack die. %LINEBREAK% After <strong>Captain Rex</strong> defends, remove this card.  %LINEBREAK% At the end of the Combat Phase, if <strong>Captain Rex</strong> did not perform an attack this phase, remove this card. %LINEBREAK% After <strong>Captain Rex</strong> is destroyed, remove this card.'
+    },
+    'Hunted': {
+      text: 'After you are destroyed, you must choose another friendly ship and assign this condition to it, if able.'
+    },
+    'Listening Device': {
+      text: 'During the System Phase, if an enemy ship with the <strong>Informant</strong> upgrade is at range 0-2, flip your dial faceup.'
+    },
+    'Rattled': {
+      text: 'After a bomb or mine at range 0-1 detonates, suffer 1 %CRIT%. Then, remove this card. %LINEBREAK% Action: If there are no bombs or mines at range 0-1, remove this card.'
+    },
+    'Optimized Prototype': {
+      text: 'While you perform a %FRONTARC% primary attack against a ship locked by a friendly ship with the <strong>Director Krennic</strong> upgrade, you may spend 1 %HIT%/%CRIT%/%FOCUS% result. If you do, choose one: the defender loses 1 shield or the defender flips 1 of its facedown damage cards.'
+    },
+    'I\'ll Show You the Dark Side': {
+      text: ' When this card is assigned, if there is no faceup damage card on it, the player who assigned it searches the damage deck for 1 Pilot damage card and places it faceup on this card. Then shuffle the damage deck. When you would suffer 1 %CRIT% damage, you are instead dealt the faceup damage card on this card. Then, remove this card. '
+    },
+    'Proton Bomb': {
+      text: '<strong>Types:</strong> Device, Bomb %LINEBREAK% At the end of the Activation Phase, this device detonates. When this device detonates, each ship and remote at range 0-1 suffers 1 %CRIT% damage.%LINEBREAK%<i>Errata (Official Rulings Thread 03/2019): Added: "and remote"</i>'
+    },
+    'Seismic Charge': {
+      text: '<strong>Types:</strong> Device, Bomb %LINEBREAK% At the end of the Activation Phase this device detonates. When this device detonates, choose 1 obstacle at range 0-1. Each ship and remote at range 0-1 of the obstacle suffers 1 %HIT% damage. Then remove that obstacle.%LINEBREAK%<i>Errata (Official Rulings Thread 03/2019): Added: "and remote"</i> '
+    },
+    'Bomblet': {
+      text: '<strong>Types:</strong> Device, Bomb %LINEBREAK% At the end of the Activation Phase this device detonates. When this device detonates, each ship and remote at range 0-1 rolls 2 attack dice. Each ship and remote suffers 1 %HIT% damage for each %HIT%/%CRIT% result.%LINEBREAK%<i>Errata (Official Rulings Thread 03/2019): Added: "and remote"</i>'
+    },
+    'Loose Cargo': {
+      text: '<strong>Types:</strong> Obstacle, Placed %LINEBREAK% Loose cargo is a debris cloud.'
+    },
+    'Spare Parts': {
+      text: '<strong>Types:</strong> Obstacle, Placed %LINEBREAK% Spare parts is a debris cloud. %LINEBREAK% When this object is dropped, fit the tab between the ship\'s rear guides.'
+    },
+    'Conner Net': {
+      text: '<strong>Types:</strong> Device, Mine %LINEBREAK% After a ship overlaps or moves through this device, it detonates. When this device detonates, the ship suffers 1 %HIT% damage and gains 3 ion tokens.'
+    },
+    'Proximity Mine': {
+      text: '<strong>Types:</strong> Device, Mine %LINEBREAK% After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.%LINEBREAK%<i>Errata (since rules reference 1.0.2): Added: "1 %HIT% plus"</i>'
+    },
+    'DRK-1 Probe Droid': {
+      text: 'INIT: 0 <br>AGILITY: 3 <br>HULL: 1 %LINEBREAK% <strong>Types:</strong> Device, Remote %LINEBREAK%  <strong>System Phase:</strong> The DRK-1 probe droid\'s controlling player may choose a [2 %BANKLEFT%], [2 %STRAIGHT%] or [2 %BANKRIGHT%] template and any set of the DRK-1\'s guides. The player then relocates the remote, placing the DRK-1 at the other end of the template. It can be placed overlapping an object this way. %LINEBREAK%If the DRK-1 overlaps a ship, use the position marker to denote the ship\'s position, then place the ship on top of the remote. %LINEBREAK%<strong>Activation, Engagement, and End Phase:</strong> No effect. %LINEBREAK%<strong>Other Rules:</strong> While a ship locks an object or jams an enemy ship, it may measure range from a friendly DRK-1 probe droid. After an enemy ship executes a maneuver that causes it to overlap a DRK-1 probe droid, the ship\'s controller rolls 1 attack die. On a %FOCUS% result, the DRK-1 probe droid suffers 1 %HIT% damage.'
+    },
+    'Buzz Droid Swarm': {
+      text: 'INIT: 0 <br>AGILITY: 1 <br>HULL: 1 %LINEBREAK% <strong>Types:</strong> Device, Remote %LINEBREAK% <strong>System, Activation, and End Phase:</strong> No effect. %LINEBREAK%<strong>Engagement Phase:</strong> When you engage, each enemy ship at range 0 of the buzz droid swarm suffers 1 %CRIT% damage. %LINEBREAK%<strong>Other Rules:</strong> After an enemy ship overlaps or moves through a buzz droid swarm, the swarm\'s controlling player relocates it by aligning the tab to that ship\'s front or rear guides (this ship is at range 0 of the swarm). The swarm cannot be aligned to a set of the ship\'s guides if doing so would cause it to overlap an object. If the swarm cannot be placed at a chosen set of guides, its controlling player must align it to the other set of the ship\'s guides. If it cannot be aligned to the other set, the swarm and the enemy ship that overlapped or moved through it each suffer 1 %HIT% damage. %LINEBREAK%<i>Errata (since rules reference 1.4): Agility adjusted for balance.</i>'
+    },
+    'It\'s the Resistance': {
+      text: '<strong>Setup:</strong> Start in reserve. %LINEBREAK% When you deploy, you are placed within range 1 of any table edge and beyond range 3 of any enemy ship. %LINEBREAK% At the start of the round, if all of the friendly <strong>GA-97</strong>\'s %CHARGE% are active, you <strong>must</strong> deploy. Then remove this card. After the friendly <strong>GA-97</strong> is destroyed, you <strong>must</strong> deploy. Then gain 1 disarm token and remove this card.'
+    },
+    'Electro-Proton Bomb': {
+      text: '<strong>Types:</strong> Device, Bomb %LINEBREAK%  At the end of the Activation Phase this device detonates. When this device detonates, each ship and remote at range 0-2 rolls 4 attack dice. Each ship loses 1 shield for each blank result, gains 1 ion token for each %FOCUS%/%HIT% result, and gains 1 disarm token for each %CRIT% result. Each remote at range 0-1 loses 1 shield for each blank result and suffers 1 damage for each %FOCUS%/%HIT% result.'
+    },
+    'Decoyed': {
+      text: 'While you defend, each friendly <strong>Naboo Handmaiden</strong> in the attack arc may spend 1 evade token to change one of your results to an %EVADE% result. %LINEBREAK% If you are a Naboo Royal N-1 Starfighter, each friendly <strong>Naboo Handmaiden</strong> in the attack arc may spend 1 evade token to add 1 %EVADE% result instead.'
+    },
+    'Compromising Intel': {
+      text: 'During the System Phase, if the enemy <strong>Vi Moradi</strong> is at range 0-3, flip your dial faceup. %LINEBREAK% While you defend or perform an attack against the enemy <strong>Vi Moradi</strong>, you cannot spend focus tokens.'
+    },
+    'Cluster Mine': {
+      text: '<strong>Types:</strong> Device, Mine %LINEBREAK%   A Cluster Mine Set consists of 3 individual Cluster Mine devices. %LINEBREAK% When a Cluster Mines set is placed, the center Cluster Mine is placed as normal, then two additional Cluster Mines are placed in the recesses as shown. %LINEBREAK% After a ship overlaps or moves through any individual Cluster Mine, it detonates. Other Cluster Mines in the set that were not overlapped or moved through do not detonate. %LINEBREAK% When each of these devices detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT%/%CRIT% damage for each matching result.'
+    },
+    'Ion Bomb': {
+      text: '<strong>Types:</strong> Device, Bomb %LINEBREAK% At the end of the Activation Phase, this device detonates. When this device detonates, each ship at range 0-1 gains 3 ion tokens, and each remote at range 0-1 suffers 1 %HIT% damage.'
+    },
+    'Concussion Bomb': {
+      text: '<strong>Types:</strong> Device, Bomb %LINEBREAK% At the end of the Activation Phase, this device detonates. When this device detonates, each ship and remote at range 0-1 is dealt 1 facedown damage card. Then, each ship at range 0-1 must expose 1 damage card unless it chooses to gain 1 strain token.'
+    },
+    'Thermal Detonator': {
+      text: '<strong>Types:</strong> Device, Bomb %LINEBREAK% At the end of the Activation Phase, this device detonates. When this device detonates, each ship and remote at range 0-1 rolls 1 attack die. Each ship gains 1 strain token for each %FOCUS% result, and each ship and remote suffers 1 %HIT%/%CRIT% damage for each matching result.'
+    },
+    'Sensor Buoy': {
+      text: 'INIT: 0 <br>AGILITY: 3 <br>HULL: 2 %LINEBREAK% <strong>Types:</strong> Device, Remote %LINEBREAK% Sensor buoys are remotes that come in pairs (one red, and one blue, each with its own remote card), and are placed by the <strong>Sensor Buoy Suite</strong> upgrade card. Beyond being remotes and interacting with that card, they have no additional rules.'
+    },
+    'Electro-Chaff Cloud': {
+      text: 'An electro-chaff cloud is a device and an obstacle. %LINEBREAK% During the End Phase, remove each electro-chaff cloud with no fuse markers, then remove one fuse marker from each electro-chaff cloud. An electro-chaff cloud can never have more than one fuse token.'
+    },
+    'Tracking Torpedoes': {
+      text: 'INIT: 0 <br>AGILITY: 3 <br>HULL: 3 %LINEBREAK% <strong>System Phase:</strong> At this remote\'s initiative, its controlling player relocates this remote forward using the [3 %BANKLEFT%], [3 %BANKRIGHT%], or [4 %STRAIGHT%] template. %LINEBREAK% <strong>Activation Phase:</strong> No effect. %LINEBREAK% <strong>Engagement Phase:</strong> At this remote\'s initiative, if an object on which it has a lock is in its %FRONTARC% at range 0-1, this remote detonates. End Phase: During the End Phase, if this remote does not have a lock on any object, this remote must acquire a lock on an object in its %FRONTARC% at range 1-3, if able. %LINEBREAK% <strong>Other Rules:</strong> After this remote is destroyed, roll 1 attack die. On a %HIT% or %CRIT% result, this remote detonates. %LINEBREAK% When this remote detonates, each ship, remote, and structure at range 0 or in its %FRONTARC% at range 1 rolls 4 attack dice and suffers 1 damage for each matching %HIT% or %CRIT% result.'
+    },
+    'Fearful Prey': {
+      text: 'After you defend against an enemy <strong>Fearsome Predator</strong>, if you did not spend at least 1 green token during the attack, gain 1 strain token.'
+    },
+    'You Should Thank Me': {
+      text: 'This condition is assigned facedown. Reveal it after you defend. %LINEBREAK% After you defend, <strong>Zam Wesell</strong> recovers 1 %CHARGE%. Then, you may acquire a lock on the attacker. %LINEBREAK% At the end of the Engagement Phase, if this card is facedown and you are in an enemy ship\'s firing arc, you may reveal this card and spend 2 %CHARGE% from <strong>Zam Wesell</strong>. If you do, you may perform a bonus attack. %LINEBREAK% At the start of the System Phase, remove this condition.'
+    },
+    'You\'d Better Mean Business': {
+      text: 'This condition is assigned facedown. Reveal it after you defend. %LINEBREAK% After you defend, you may spend 2 %CHARGE% from <strong>Zam Wesell</strong>. If you do, perform a bonus attack against the attacker. %LINEBREAK% At the end of the Engagement Phase, if this card is facedown and you are in an enemy ship\'s firing arc, you may reveal this card. If you do, <strong>Zam Wesell</strong> recovers 2 %CHARGE%. %LINEBREAK% At the start of the System Phase, remove this condition.'
+    },
+    'Merciless Pursuit': {
+      text: 'After you perform an attack, if the defender is equipped with <b>The Child</b>, you may acquire a lock on the defender.'
+    },
+    'Marked for Elimination': {
+      text: 'While you defend, if the attacker is equipped with <b>Tracking Fob</b> and has a lock on you, you cannot spend green tokens.'
+    },
+    'False Friend': {
+      text: 'During the System Phase, if an enemy ship with the <b>Tal Merrik</b> upgrade is at range 0-2 or an enemy remote is at range 0-2, flip your dial faceup. %LINEBREAK% <strong>Action:</strong> Gain 1 deplete token and stress token to discard this condition.'
+    },
+    'Trials of the Darksaber': {
+      text: 'While you perform an attack at attack range 0-2, you may spend 1 %CRIT% result. If you do, if the defending ship\'s player has scored more %POINT% than you, they lose 1 scored %POINT%. Place thatt %POINT% on this card. %LINEBREAK% After you defend, if you are destroyed by an enemy ship at attack range 0-2, assign the <b>Trials of the Darksaber</b> condition to the attacker (all %POINT% remain on this card). %LINEBREAK%. At the end of the game, this ship scores all %POINT% on this card.'
+    },
+    'Blazer Bomb': {
+      text: '<strong>Types:</strong> Device, Bomb %LINEBREAK% At the end of the Activation Phase, this device detonates. %LINEBREAK% When this device detonates, each ship and remote at range 0-1 rolls 1 attack die. Each ship or remote suffers 1 %HIT% damage for each %HIT%/%CRIT% result. %LINEBREAK% After this devices detonates, place a Blaze by aligning the Blaze\'s guides to the device\'s tab. %LINEBREAK% A Blaze is an obstacle. After this obstacle is placed, place a fues marker on it. %LINEBREAK% During the End Phase, remove each Blaze with no fuse markers, then remove 1 fuse marker from each Blaze.'
+    },
+    'Clan Wren Commandos': {
+      text: 'INIT: 2 <br> %FRONTARC%: 2 %RANGEBONUS%, RANGE: 1-2 <br>%AGILITY%: 2, %HULL%: 2, %CHARGE%: 2 %LINEBREAK% <strong>Types:</strong> Device, Remote %LINEBREAK% After an enemy ship overlaps you, it gains 1 strain token. %LINEBREAK% <strong>Activation Phase:</strong> At the start of this phase, you may relocate forward using a [1 %TURNLEFT%], [2 %STRAIGHT%], or [1 %TURNRIGHT%] template.%LINEBREAK% <strong>Engagement Phase:</strong> You cannot attack if there are enemy ships at range 0. To perform an attack, you must spend 1 %CHARGE%. While you perform an attack, you may change 1 %FOCUS% result to a %HIT% result.'
+    },
+    'Death Watch Commandos': {
+      text: 'INIT: 2 <br> %FRONTARC%: 2 %RANGEBONUS%, RANGE: 1-2 <br>%AGILITY%: 2, %HULL%: 2, %CHARGE%: 2 %LINEBREAK% <strong>Types:</strong> Device, Remote %LINEBREAK% After an enemy ship overlaps you, it gains 1 strain token.%LINEBREAK% <strong>Activation Phase:</strong> At the start of this phase, you may relocate forward using a [1 %TURNLEFT%], [2 %STRAIGHT%], or [1 %TURNRIGHT%] template.%LINEBREAK% <strong>Engagement Phase:</strong> You cannot attack if there are enemy ships at range 0. To perform an attack, you must spend 1 %CHARGE%. While you perform an attack, you may change 1 %FOCUS% result to a %HIT% result.'
+    },
+    'Nite Owl Commandos': {
+      text: 'INIT: 2 <br> %FRONTARC%: 2 %RANGEBONUS%, RANGE: 1-2 <br>%AGILITY%: 2, %HULL%: 2, %CHARGE%: 2 %LINEBREAK% <strong>Types:</strong> Device, Remote %LINEBREAK% After an enemy ship overlaps you, it gains 1 strain token.%LINEBREAK% <strong>Activation Phase:</strong> At the start of this phase, you may relocate forward using a [1 %TURNLEFT%], [2 %STRAIGHT%], or [1 %TURNRIGHT%] template.%LINEBREAK% <strong>Engagement Phase:</strong> You cannot attack if there are enemy ships at range 0. To perform an attack, you must spend 1 %CHARGE%. While you perform an attack, you may change 1 %FOCUS% result to a %HIT% result.'
+    },
+    'Imperial Super Commandos': {
+      text: 'INIT: 2 <br> %FRONTARC%: 2 %RANGEBONUS%, RANGE: 1-2 <br>%AGILITY%: 2, %HULL%: 2, %CHARGE%: 2 %LINEBREAK% <strong>Types:</strong> Device, Remote %LINEBREAK% After an enemy ship overlaps you, it gains 1 strain token.%LINEBREAK% <strong>Activation Phase:</strong> At the start of this phase, you may relocate forward using a [1 %TURNLEFT%], [2 %STRAIGHT%], or [1 %TURNRIGHT%] template.%LINEBREAK% <strong>Engagement Phase:</strong> You cannot attack if there are enemy ships at range 0. To perform an attack, you must spend 1 %CHARGE%. While you perform an attack, you may change 1 %FOCUS% result to a %HIT% result.'
+    },
+    'Mandalorian Super Commandos': {
+      text: 'INIT: 2 <br> %FRONTARC%: 2 %RANGEBONUS%, RANGE: 1-2 <br>%AGILITY%: 2, %HULL%: 2, %CHARGE%: 2 %LINEBREAK% <strong>Types:</strong> Device, Remote %LINEBREAK% After an enemy ship overlaps you, it gains 1 strain token.%LINEBREAK% <strong>Activation Phase:</strong> At the start of this phase, you may relocate forward using a [1 %TURNLEFT%], [2 %STRAIGHT%], or [1 %TURNRIGHT%] template.%LINEBREAK% <strong>Engagement Phase:</strong> You cannot attack if there are enemy ships at range 0. To perform an attack, you must spend 1 %CHARGE%. While you perform an attack, you may change 1 %FOCUS% result to a %HIT% result.'
+    },
+    'Guarded': {
+      text: 'While you defend, if you are not in the attacker\'s %BULLSEYEARC%, roll 1 additional defense die for each friendly calculating or evading <b>MagnaGuard Protector</b> in the attack arc.'
+    }
+  };
+  chassis_translations = {
+    "Vectored Thrusters": {
+      display_name: "Vectored Thrusters",
+      text: "After you perform an action, you may perform a red %BOOST% action."
+    },
+    "Advanced Targeting Computer": {
+      display_name: "Advanced Targeting Computer",
+      text: "While you perform a primary attack against a defender you have locked, roll 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
+    },
+    "Autothrusters": {
+      display_name: "Autothrusters",
+      text: "After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."
+    },
+    "Nimble Bomber": {
+      display_name: "Nimble Bomber",
+      text: "If you would drop a device using a %STRAIGHT% template, you may use a %BANKLEFT% or %BANKRIGHT% template of the same speed instead."
+    },
+    "Full Throttle": {
+      display_name: "Full Throttle",
+      text: "After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
+    },
+    "Experimental Scanners": {
+      display_name: "Experimental Scanners",
+      text: "You can acquire locks beyond range 3. You cannot acquire locks at range 1."
+    },
+    "Stygium Array": {
+      display_name: "Stygium Array",
+      text: "After you decloak, you may perform an %EVADE% action. At the start of the End Phase, you may spend 1 evade token to gain 1 cloak token."
+    },
+    "Sensor Blindspot": {
+      display_name: "Sensor Blindspot",
+      text: "While you perform a primary attack at attack range 0-1, do not apply the range 0-1 bonus and roll 1 fewer attack die."
+    },
+    "Microthrusters": {
+      display_name: "Microthrusters",
+      text: "While you perform a barrel roll, you <b>must</b> use the %BANKLEFT% or %BANKRIGHT% template instead of the %STRAIGHT% template."
+    },
+    "Weapon Hardpoint": {
+      display_name: "Weapon Hardpoint",
+      text: "You can equip 1 %CANNON%, %TORPEDO%, or %MISSILE% upgrade."
+    },
+    "Advanced Droid Brain": {
+      display_name: "Advanced Droid Brain",
+      text: "After you perform a %CALCULATE% action, gain 1 calculate token."
+    },
+    "Tail Gun": {
+      display_name: "Tail Gun",
+      text: "While you have a docked ship, you have a primary %REARARC% weapon with an attack value equal to your docked ship's primary %FRONTARC% attack value."
+    },
+    "Locked and Loaded": {
+      display_name: "Locked and Loaded",
+      text: "While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus primary %REARARC% attack."
+    },
+    "Concordia Faceoff": {
+      display_name: "Concordia Faceoff",
+      text: "While you defend, if the attack range is 1 and you are in the attacker's %FRONTARC%, change 1 result to an %EVADE% result."
+    },
+    "Spacetug Tractor Array": {
+      display_name: "Spacetug Tractor Array",
+      text: " <strong>Action:</strong> Choose a ship in your %FRONTARC% at range 1. That ship gains 1 tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1."
+    },
+    "Hope": {
+      display_name: "Hope",
+      text: "After another friendly ship at range 0-3 is destroyed, you may perform a %FOCUS% or %BOOST% action."
+    },
+    "Sensitive Controls": {
+      display_name: "Sensitive Controls",
+      text: "During the System Phase, you may perform a red %BARRELROLL% or red %BOOST% action."
+    },
+    "Vectored Cannons": {
+      display_name: "Vectored Cannons",
+      text: "During the System Phase, you may perform a red %BOOST% or red %ROTATEARC% action. You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%."
+    },
+    "Advanced Fire Control": {
+      display_name: "Advanced Fire Control",
+      text: "After you perform a %CANNON% or %MISSILE% attack, if you have a lock on the defender, you may perform a bonus primary attack against the defender."
+    },
+    "Networked Calculations": {
+      display_name: "Networked Calculations",
+      text: "While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result."
+    },
+    "Independent Calculations": {
+      display_name: "Independent Calculations",
+      text: "While you perform a white %CALCULATE% action, you may treat it as red to gain 1 additional calculate token. Other ships cannot spend your calculate tokens using the <strong>Networked Calculations</strong> ship ability."
+    },
+    "Adaptive Ailerons": {
+      display_name: "Adaptive Ailerons",
+      text: "Before you reveal your dial, if you are not stressed, you <b>must</b> boost.  %LINEBREAK% <i>Errata (since rules reference 1.4.2): Changed ship ability</i>"
+    },
+    "Pursuit Craft": {
+      display_name: "Pursuit Craft",
+      text: "After you deploy, you may acquire a lock on a ship the friendly <strong>Hound's Tooth</strong> has locked."
+    },
+    "Dead to Rights": {
+      display_name: "Dead to Rights",
+      text: "While you perform an attack, if the defender is in your %BULLSEYEARC%, defense dice cannot be modified using green tokens."
+    },
+    "Comms Shuttle": {
+      display_name: "Comms Shuttle",
+      text: "While you are docked, your carrier ship gains %COORDINATE%. Before your carrier ship activates, it may perform a %COORDINATE% action."
+    },
+    "Controlled Ailerons": {
+      display_name: "Controlled Ailerons",
+      text: "Before you reveal your dial, if you are not stressed, you may boost. %LINEBREAK% <i>Errata (since rules reference 1.4.2): Changed ship ability</i>"
+    },
+    "Co-Pilot": {
+      display_name: "Co-Pilot",
+      text: "While you are docked, your carrier ship has your pilot ability in addition to its own."
+    },
+    "Rigged Energy Cells": {
+      display_name: "Rigged Energy Cells",
+      text: "During the System Phase, if you are not docked, lose 1 %CHARGE%. At the end of the Activation Phase, if you have 0 %CHARGE%, you are destroyed. Before you are removed, each ship at range 0-1 suffers 1 %CRIT% damage."
+    },
+    "Refined Gyrostabilizers": {
+      display_name: "Refined Gyrostabilizers",
+      text: "You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."
+    },
+    "Heavy Weapon Turret": {
+      display_name: "Heavy Weapon Turret",
+      text: "You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You <b>must</b> treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%."
+    },
+    "Linked Battery": {
+      display_name: "Linked Battery",
+      text: "While you perform a %CANNON% attack, roll 1 additional die."
+    },
+    "Notched Stabilizers": {
+      display_name: "Notched Stabilizers",
+      text: "While you move, you ignore asteroids."
+    },
+    "Fine-Tuned Controls": {
+      display_name: "Fine-Tuned Controls",
+      text: "After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action."
+    },
+    "Pinpoint Tractor Array": {
+      display_name: "Pinpoint Tractor Array",
+      text: "You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you fully execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action. %LINEBREAK%<i>Errata (since rules reference 1.4): added \"fully\"</i>"
+    },
+    "Plated Hull": {
+      display_name: "Plated Hull",
+      text: "While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
+    },
+    "Explosion with Wings": {
+      display_name: "Explosion with Wings",
+      text: "You are dealt 1 facedown damage card. After you perform a %SLAM% action, you may expose 1 damage card to remove 1 disarm token."
+    },
+    "Fine-Tuned Thrusters": {
+      display_name: "Fine-Tuned Thrusters",
+      text: "After you fully execute a maneuver, if you are not depleted or strained, you may gain 1 deplete or strain token to perform a %LOCK% or %BARRELROLL% action."
+    },
+    "Networked Aim": {
+      display_name: "Networked Aim",
+      text: "You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
+    },
+    "Fire Convergence": {
+      display_name: "Fire Convergence",
+      text: "While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."
+    },
+    "Rotating Cannons": {
+      display_name: "Rotating Cannons",
+      text: "You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %CANNON% upgrades as %SINGLETURRETARC%."
+    },
+    "Twin Ion Engines": {
+      display_name: "Twin Ion Engines",
+      text: "Ignore the \"TIE\" ship restriction on upgrade cards."
+    },
+    "Intuitive Controls": {
+      display_name: "Intuitive Controls",
+      text: "During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."
+    },
+    "Intuitive Interface": {
+      display_name: "Intuitive Interface",
+      text: "After you perform an action added to your action bar by a %TALENT%, %ILLICIT%, or %MODIFICATION% upgrade, you may perform a %CALCULATE% action."
+    },
+    "Devastating Barrage": {
+      display_name: "Devastating Barrage",
+      text: "While you perform a %TORPEDO% or %MISSILE% attack, if the defender is in your %BULLSEYEARC%, your %CRIT% results cannot be cancelled by %EVADE% results."
+    },
+    "Pursuit Thrusters": {
+      display_name: "Pursuit Thrusters",
+      text: "During the System Phase, you may perform a %BOOST% action."
+    },
+    "Versatile Frame": {
+      display_name: "Versatile Frame",
+      text: "You can equip 1 %TORPEDO% or %MISSILE% upgrade. While your revealed maneuver is blue, add white %BOOST% to your action bar."
+    }
+  };
+  for (name in pilot_translations) {
+    data = pilot_translations[name];
+    if (data.display_name == null) {
+      data['display_name'] = name;
     }
   }
-  _ref1 = basic_cards.upgradesById;
-  for (i = _j = 0, _len1 = _ref1.length; _j < _len1; i = ++_j) {
-    upgrade_data = _ref1[i];
-    if (upgrade_data.id !== i) {
-      throw new Error("ID mismatch: upgrade at index " + i + " has ID " + upgrade_data.id);
+  for (name in upgrade_translations) {
+    data = upgrade_translations[name];
+    if (data.display_name == null) {
+      data['display_name'] = name;
     }
   }
-  _ref2 = basic_cards.conditionsById;
-  for (i = _k = 0, _len2 = _ref2.length; _k < _len2; i = ++_k) {
-    condition_data = _ref2[i];
-    if (condition_data.id !== i) {
-      throw new Error("ID mismatch: condition at index " + i + " has ID " + condition_data.id);
+  for (name in condition_translations) {
+    data = condition_translations[name];
+    if (data.display_name == null) {
+      data['display_name'] = name;
     }
   }
-  _ref3 = basic_cards.chassisById;
-  for (i = _l = 0, _len3 = _ref3.length; _l < _len3; i = ++_l) {
-    chassis_data = _ref3[i];
-    if (chassis_data.id !== i) {
-      throw new Error("ID mismatch: chassis at index " + i + " has ID " + chassis_data.id);
+  for (name in chassis_translations) {
+    data = chassis_translations[name];
+    if (data.display_name == null) {
+      data['display_name'] = name;
     }
   }
-  _ref4 = basic_cards.quickbuildsById;
-  for (i = _m = 0, _len4 = _ref4.length; _m < _len4; i = ++_m) {
-    quickbuild_data = _ref4[i];
-    if (quickbuild_data.id !== i) {
-      throw new Error("ID mismatch: quickbuild  at index " + i + " has ID " + quickbuild_data.id);
-    }
-  }
-  exportObj.pilots = {};
-  _ref5 = basic_cards.pilotsById;
-  for (_n = 0, _len5 = _ref5.length; _n < _len5; _n++) {
-    pilot_data = _ref5[_n];
-    if (pilot_data.skip == null) {
-      pilot_data.sources = [];
-      if (pilot_data.canonical_name == null) {
-        pilot_data.canonical_name = pilot_data.name.canonicalize();
-      }
-      exportObj.pilots[pilot_data.name] = pilot_data;
-    }
-  }
-  exportObj.upgrades = {};
-  _ref6 = basic_cards.upgradesById;
-  for (_o = 0, _len6 = _ref6.length; _o < _len6; _o++) {
-    upgrade_data = _ref6[_o];
-    if (upgrade_data.skip == null) {
-      upgrade_data.sources = [];
-      if (upgrade_data.canonical_name == null) {
-        upgrade_data.canonical_name = upgrade_data.name.canonicalize();
-      }
-      exportObj.upgrades[upgrade_data.name] = upgrade_data;
-    }
-  }
-  exportObj.conditions = {};
-  _ref7 = basic_cards.conditionsById;
-  for (_p = 0, _len7 = _ref7.length; _p < _len7; _p++) {
-    condition_data = _ref7[_p];
-    if (condition_data.skip == null) {
-      if (condition_data.canonical_name == null) {
-        condition_data.canonical_name = condition_data.name.canonicalize();
-      }
-      exportObj.conditions[condition_data.name] = condition_data;
-    }
-  }
-  exportObj.chassis = {};
-  _ref8 = basic_cards.chassisById;
-  for (_q = 0, _len8 = _ref8.length; _q < _len8; _q++) {
-    chassis_data = _ref8[_q];
-    if (chassis_data.skip == null) {
-      if (chassis_data.canonical_name == null) {
-        chassis_data.canonical_name = chassis_data.name.canonicalize();
-      }
-      exportObj.chassis[chassis_data.name] = chassis_data;
-    }
-  }
-  exportObj.obstacles = {};
-  exportObj.quickbuildsById = {};
-  quickbuild_count = 0;
-  _ref9 = basic_cards.quickbuildsById;
-  for (_r = 0, _len9 = _ref9.length; _r < _len9; _r++) {
-    quickbuild_data = _ref9[_r];
-    if (quickbuild_data.skip == null) {
-      quickbuild_count += 1;
-      if (quickbuild_data.suffix == null) {
-        quickbuild_data.suffix = "";
-      }
-      exportObj.quickbuildsById[quickbuild_data.id] = quickbuild_data;
-    }
-  }
-  if (Object.keys(exportObj.quickbuildsById).length !== quickbuild_count) {
-    throw new Error("At least one quickbuild shares an ID with another");
-  }
-  _ref10 = basic_cards.ships;
-  for (ship_name in _ref10) {
-    ship_data = _ref10[ship_name];
-    if (ship_data.canonical_name == null) {
-      ship_data.canonical_name = ship_data.name.canonicalize();
-    }
-    ship_data.sources = [];
-  }
-  _ref11 = exportObj.manifestByExpansion;
-  for (expansion in _ref11) {
-    cards = _ref11[expansion];
-    for (_s = 0, _len10 = cards.length; _s < _len10; _s++) {
-      card = cards[_s];
-      if (card.skipForSource) {
-        continue;
-      }
-      try {
-        switch (card.type) {
-          case 'pilot':
-            exportObj.pilots[card.name].sources.push(expansion);
-            break;
-          case 'upgrade':
-            exportObj.upgrades[card.name].sources.push(expansion);
-            break;
-          case 'ship':
-            exportObj.ships[card.name].sources.push(expansion);
-            break;
-          case 'obstacle':
-            if (!(card.name in exportObj.obstacles)) {
-              exportObj.obstacles[card.name] = {
-                sources: []
-              };
-            }
-            exportObj.obstacles[card.name].sources.push(expansion);
-            break;
-          default:
-            throw new Error("Unexpected card type " + card.type + " for card " + card.name + " of " + expansion);
-        }
-      } catch (_error) {
-        e = _error;
-        console.log(e);
-        console.error("Error adding card " + card.name + " (" + card.type + ") from " + expansion);
-      }
-    }
-  }
-  _ref12 = exportObj.pilots;
-  for (name in _ref12) {
-    card = _ref12[name];
-    card.sources = card.sources.sort();
-  }
-  _ref13 = exportObj.upgrades;
-  for (name in _ref13) {
-    card = _ref13[name];
-    card.sources = card.sources.sort();
-  }
-  exportObj.expansions = {};
-  exportObj.pilotsById = {};
-  _ref14 = exportObj.pilots;
-  for (pilot_name in _ref14) {
-    pilot = _ref14[pilot_name];
-    exportObj.fixIcons(pilot);
-    exportObj.pilotsById[pilot.id] = pilot;
-    _ref15 = pilot.sources;
-    for (_t = 0, _len11 = _ref15.length; _t < _len11; _t++) {
-      source = _ref15[_t];
-      if (!(source in exportObj.expansions)) {
-        exportObj.expansions[source] = 1;
-      }
-    }
-  }
-  if (Object.keys(exportObj.pilotsById).length !== Object.keys(exportObj.pilots).length) {
-    throw new Error("At least one pilot shares an ID with another");
-  }
-  exportObj.pilotsByFactionCanonicalName = {};
-  exportObj.pilotsByKeyword = {};
-  exportObj.pilotsByUniqueName = {};
-  _ref16 = exportObj.pilots;
-  for (pilot_name in _ref16) {
-    pilot = _ref16[pilot_name];
-    ((_base = ((_base1 = exportObj.pilotsByFactionCanonicalName)[_name1 = pilot.faction] != null ? _base1[_name1] : _base1[_name1] = {}))[_name = pilot.canonical_name] != null ? _base[_name] : _base[_name] = []).push(pilot);
-    ((_base2 = ((_base3 = exportObj.pilotsByKeyword)[_name3 = pilot.keyword] != null ? _base3[_name3] : _base3[_name3] = {}))[_name2 = pilot.canonical_name] != null ? _base2[_name2] : _base2[_name2] = []).push(pilot);
-    ((_base4 = exportObj.pilotsByUniqueName)[_name4 = pilot.canonical_name.getXWSBaseName()] != null ? _base4[_name4] : _base4[_name4] = []).push(pilot);
-  }
-  exportObj.pilotsByFactionXWS = {};
-  _ref17 = exportObj.pilots;
-  for (pilot_name in _ref17) {
-    pilot = _ref17[pilot_name];
-    ((_base5 = ((_base6 = exportObj.pilotsByFactionXWS)[_name6 = pilot.faction] != null ? _base6[_name6] : _base6[_name6] = {}))[_name5 = pilot.xws] != null ? _base5[_name5] : _base5[_name5] = []).push(pilot);
-  }
-  exportObj.upgradesById = {};
-  _ref18 = exportObj.upgrades;
-  for (upgrade_name in _ref18) {
-    upgrade = _ref18[upgrade_name];
-    exportObj.fixIcons(upgrade);
-    exportObj.upgradesById[upgrade.id] = upgrade;
-    _ref19 = upgrade.sources;
-    for (_u = 0, _len12 = _ref19.length; _u < _len12; _u++) {
-      source = _ref19[_u];
-      if (!(source in exportObj.expansions)) {
-        exportObj.expansions[source] = 1;
-      }
-    }
-  }
-  if (Object.keys(exportObj.upgradesById).length !== Object.keys(exportObj.upgrades).length) {
-    throw new Error("At least one upgrade shares an ID with another");
-  }
-  exportObj.upgradesBySlotCanonicalName = {};
-  exportObj.upgradesBySlotXWSName = {};
-  exportObj.upgradesBySlotUniqueName = {};
-  exportObj.upgradesByUniqueName = {};
-  _ref20 = exportObj.upgrades;
-  for (upgrade_name in _ref20) {
-    upgrade = _ref20[upgrade_name];
-    ((_base7 = exportObj.upgradesBySlotCanonicalName)[_name7 = upgrade.slot] != null ? _base7[_name7] : _base7[_name7] = {})[upgrade.canonical_name] = upgrade;
-    ((_base8 = exportObj.upgradesBySlotXWSName)[_name8 = upgrade.slot] != null ? _base8[_name8] : _base8[_name8] = {})[upgrade.xws] = upgrade;
-    ((_base9 = exportObj.upgradesBySlotUniqueName)[_name9 = upgrade.slot] != null ? _base9[_name9] : _base9[_name9] = {})[upgrade.canonical_name.getXWSBaseName()] = upgrade;
-    ((_base10 = exportObj.upgradesByUniqueName)[_name10 = upgrade.canonical_name.getXWSBaseName()] != null ? _base10[_name10] : _base10[_name10] = []).push(upgrade);
-  }
-  exportObj.conditionsById = {};
-  _ref21 = exportObj.conditions;
-  for (condition_name in _ref21) {
-    condition = _ref21[condition_name];
-    exportObj.fixIcons(condition);
-    exportObj.conditionsById[condition.id] = condition;
-  }
-  if (Object.keys(exportObj.conditionsById).length !== Object.keys(exportObj.conditions).length) {
-    throw new Error("At least one condition shares an ID with another");
-  }
-  exportObj.chassisById = {};
-  _ref22 = exportObj.chassis;
-  for (chassis_name in _ref22) {
-    chassis = _ref22[chassis_name];
-    exportObj.fixIcons(chassis);
-    exportObj.chassisById[chassis.id] = chassis;
-  }
-  if (Object.keys(exportObj.chassisById).length !== Object.keys(exportObj.chassis).length) {
-    throw new Error("At least one chassis shares an ID with another");
-  }
-  exportObj.conditionsByCanonicalName = {};
-  _ref23 = exportObj.conditions;
-  for (condition_name in _ref23) {
-    condition = _ref23[condition_name];
-    (exportObj.conditionsByCanonicalName != null ? exportObj.conditionsByCanonicalName : exportObj.conditionsByCanonicalName = {})[condition.canonical_name] = condition;
-  }
-  exportObj.chassisByCanonicalName = {};
-  _ref24 = exportObj.chassis;
-  for (chassis_name in _ref24) {
-    chassis = _ref24[chassis_name];
-    (exportObj.chassisByCanonicalName != null ? exportObj.chassisByCanonicalName : exportObj.chassisByCanonicalName = {})[chassis.canonical_name] = chassis;
-  }
-  return exportObj.expansions = Object.keys(exportObj.expansions).sort();
-};
-
-exportObj.setupTranslationCardData = function(pilot_translations, upgrade_translations, condition_translations, chassis_translations) {
-  var chassis_name, condition_name, e, field, pilot_name, translation, translations, upgrade_name, _results;
-  for (upgrade_name in upgrade_translations) {
-    translations = upgrade_translations[upgrade_name];
-    exportObj.fixIcons(translations);
-    for (field in translations) {
-      translation = translations[field];
-      try {
-        exportObj.upgrades[upgrade_name][field] = translation;
-      } catch (_error) {
-        e = _error;
-        console.error("Cannot find translation for attribute " + field + " for upgrade " + upgrade_name + ". Please report this Issue. ");
-        throw e;
-      }
-    }
-  }
-  for (condition_name in condition_translations) {
-    translations = condition_translations[condition_name];
-    exportObj.fixIcons(translations);
-    for (field in translations) {
-      translation = translations[field];
-      try {
-        exportObj.conditions[condition_name][field] = translation;
-      } catch (_error) {
-        e = _error;
-        console.error("Cannot find translation for attribute " + field + " for condition " + condition_name + ". Please report this Issue. ");
-        throw e;
-      }
-    }
-  }
-  for (chassis_name in chassis_translations) {
-    translations = chassis_translations[chassis_name];
-    exportObj.fixIcons(translations);
-    for (field in translations) {
-      translation = translations[field];
-      try {
-        exportObj.chassis[chassis_name][field] = translation;
-      } catch (_error) {
-        e = _error;
-        console.error("Cannot find translation for attribute " + field + " for chassis " + chassis_name + ". Please report this Issue. ");
-        throw e;
-      }
-    }
-  }
-  _results = [];
-  for (pilot_name in pilot_translations) {
-    translations = pilot_translations[pilot_name];
-    exportObj.fixIcons(translations);
-    _results.push((function() {
-      var _results1;
-      _results1 = [];
-      for (field in translations) {
-        translation = translations[field];
-        try {
-          _results1.push(exportObj.pilots[pilot_name][field] = translation);
-        } catch (_error) {
-          e = _error;
-          console.error("Cannot find translation for attribute " + field + " for pilot " + pilot_name + ". Please report this Issue. ");
-          throw e;
-        }
-      }
-      return _results1;
-    })());
-  }
-  return _results;
-};
-
-exportObj.fixIcons = function(data) {
-  if (data.text != null) {
-    return data.text = data.text.replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%DOUBLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-doubleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%LEFTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-leftarc"></i>').replace(/%RIGHTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rightarc"></i>').replace(/%ROTATEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>').replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>').replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%MODIFICATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>').replace(/%RELOAD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%ENERGY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-energy"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%F-COORDINATE%/g, '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%TACTICALRELAY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%F-REINFORCE%/g, '<i class="xwing-miniatures-font force xwing-miniatures-font-reinforce"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%REVERSESTRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reversestraight"></i>').replace(/%REVERSEBANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reversebankleft"></i>').replace(/%REVERSEBANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reversebankright"></i>').replace(/%SHIELD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-shield"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SENSOR%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sensor"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%TALENT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>').replace(/%TITLE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%FORCEPOWER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>').replace(/%RANGEBONUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rangebonusindicator"></i>').replace(/%CONFIGURATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>').replace(/%AGILITY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-agility"></i>').replace(/%HULL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hull"></i>').replace(/%LINEBREAK%/g, '<br /><br />');
-  }
-};
-
-exportObj.canonicalizeShipNames = function(card_data) {
-  var ship_data, ship_name, _ref, _results;
-  _ref = card_data.ships;
-  _results = [];
-  for (ship_name in _ref) {
-    ship_data = _ref[ship_name];
-    _results.push(ship_data.canonical_name != null ? ship_data.canonical_name : ship_data.canonical_name = ship_data.name.canonicalize());
-  }
-  return _results;
-};
-
-exportObj.renameShip = function(name, new_name) {
-  return exportObj.ships[name].display_name = new_name;
-};
-
-exportObj.randomizer = function(faction_name, points) {
-  var listcount, shiplistmaster;
-  shiplistmaster = exportObj.basicCardData;
-  return listcount = 0;
-};
-
-exportObj.standardShipInclusions = [
-  {
-    name: 'X-Wing',
-    faction: 'Rebel Alliance'
-  }, {
-    name: 'Y-Wing',
-    faction: 'Rebel Alliance'
-  }, {
-    name: 'U-Wing',
-    faction: 'Rebel Alliance'
-  }, {
-    name: 'TIE Fighter',
-    faction: 'Galactic Empire'
-  }, {
-    name: 'TIE/rb Heavy',
-    faction: 'Galactic Empire'
-  }, {
-    name: 'TIE Striker',
-    faction: 'Galactic Empire'
-  }, {
-    name: 'Z-95 Headhunter',
-    faction: 'Rebel Alliance'
-  }, {
-    name: 'TIE Advanced',
-    faction: 'Galactic Empire'
-  }, {
-    name: 'TIE Interceptor',
-    faction: 'Galactic Empire'
-  }, {
-    name: 'Lambda-Class Shuttle',
-    faction: 'Galactic Empire'
-  }
-];
-
-exportObj.standardPilotExclusions = [];
-
-exportObj.standardUpgradeExclusions = [];
-
-exportObj.epicExclusionsList = [];
-
-exportObj.epicExclusions = function(data) {
-  var _ref, _ref1;
-  if ((data.ship != null) && (_ref = data.ship, __indexOf.call(exportObj.epicExclusionsList, _ref) >= 0)) {
-    return false;
-  } else if ((data.slot != null) && (data.slot === "Command")) {
-    return false;
-  } else if ((data.name != null) && (_ref1 = data.name, __indexOf.call(exportObj.epicExclusionsList, _ref1) >= 0)) {
-    return false;
-  } else {
-    return true;
-  }
-};
-
-exportObj.standardCheck = function(data, faction, shipCheck) {
-  var ship, _i, _len, _ref, _ref1, _ref2, _ref3;
-  if (faction == null) {
-    faction = '';
-  }
-  if (shipCheck == null) {
-    shipCheck = false;
-  }
-  if (shipCheck) {
-    if ((_ref = data.name, __indexOf.call(exportObj.standardPilotExclusions, _ref) >= 0)) {
-      return false;
-    }
-    _ref1 = exportObj.standardShipInclusions;
-    for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-      ship = _ref1[_i];
-      if (ship.faction === faction && (data.name === ship.name || data.ship === ship.name || (Array.isArray(data.ship) && (_ref2 = ship.name, __indexOf.call(data.ship, _ref2) >= 0)))) {
-        return true;
-      }
-    }
-    return false;
-  } else {
-    return _ref3 = data.name, __indexOf.call(exportObj.standardUpgradeExclusions, _ref3) < 0;
-  }
-};
-
-exportObj.standardCheckBrowser = function(data, faction, type) {
-  var check, ship, _i, _j, _len, _len1, _ref, _ref1, _ref2, _ref3, _ref4;
-  if (faction == null) {
-    faction = '';
-  }
-  if (type === 'Pilot') {
-    check = false;
-    _ref = exportObj.standardShipInclusions;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      ship = _ref[_i];
-      if (data.faction === ship.faction && (data.ship === ship.name)) {
-        check = true;
-      }
-    }
-    if (check === false) {
-      return false;
-    }
-    return _ref1 = data.name, __indexOf.call(exportObj.standardPilotExclusions, _ref1) < 0;
-  } else if (type === 'Ship') {
-    _ref2 = exportObj.standardShipInclusions;
-    for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
-      ship = _ref2[_j];
-      if (ship.faction === faction && (data.name === ship.name || data.ship === ship.name || (Array.isArray(data.ship) && (_ref3 = ship.name, __indexOf.call(data.ship, _ref3) >= 0)))) {
-        return true;
-      }
-    }
-    return false;
-  } else {
-    return _ref4 = data.name, __indexOf.call(exportObj.standardUpgradeExclusions, _ref4) < 0;
-  }
+  return exportObj.setupTranslationCardData(pilot_translations, upgrade_translations, condition_translations, chassis_translations);
 };
 
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
