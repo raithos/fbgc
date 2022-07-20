@@ -1363,6 +1363,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Cavern Angels Zealot",
         id: 22,
+        max_per_squad: 2,
         faction: "Rebel Alliance",
         ship: "X-Wing",
         keyword: ["Partisan"],
