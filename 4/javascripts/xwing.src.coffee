@@ -2340,7 +2340,7 @@ class exportObj.SquadBuilder
         @tooltip_currently_displaying = null
         @randomizer_options =
             sources: null
-            points: 20
+            points: 25
             ship_limit: 0
             collection_only: true
             fill_zero_pts: false
@@ -2424,7 +2424,7 @@ class exportObj.SquadBuilder
         exportObj.translate('ui', what, args)
 
     setupUI: ->
-        DEFAULT_RANDOMIZER_POINTS = 20
+        DEFAULT_RANDOMIZER_POINTS = 25
         DEFAULT_RANDOMIZER_TIMEOUT_SEC = 4
         DEFAULT_RANDOMIZER_SHIP_LIMIT = 0
 
@@ -2444,7 +2444,7 @@ class exportObj.SquadBuilder
                     <br />
                 </div>
                 <div class="col-md-4 points-display-container">
-                    Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="20">
+                    Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="25">
                     <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left) <span class="points-destroyed red"></span></span>
                     <span class="content-warning loading-failed-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated" defaultText="Broken squad link warning"></span></span>
                     <span class="content-warning old-version-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated" defaultText="This squad was created for an older version of X-Wing."></span></span>
@@ -3573,7 +3573,7 @@ class exportObj.SquadBuilder
         @isStandard = false
         @isEpic = false
         @isQuickbuild = false
-        @desired_points_input.val 20
+        @desired_points_input.val 25
         if oldQuickbuild != @isQuickbuild
             old_id = @current_squad.id
             @newSquadFromScratch($.trim(@current_squad.name))
@@ -3804,7 +3804,7 @@ class exportObj.SquadBuilder
                     if parseInt(game_type_and_point_abbrev.split('=')[1])
                         p = parseInt(game_type_and_point_abbrev.split('=')[1])
                     else
-                        p = 20
+                        p = 25
                     g = game_type_and_point_abbrev.split('=')[0]
                     [ g, p, s ]
 
@@ -5132,7 +5132,7 @@ class exportObj.SquadBuilder
         () =>
             @_randomizerLoopBody(data)
 
-    randomSquad: (max_points=20, allowed_sources=null, timeout_ms=1000, ship_limit=0, collection_only=true, fill_zero_pts=false) ->
+    randomSquad: (max_points=25, allowed_sources=null, timeout_ms=1000, ship_limit=0, collection_only=true, fill_zero_pts=false) ->
         @backend_status.fadeOut 'slow'
         @suppress_automatic_new_ship = true
         
@@ -5539,7 +5539,7 @@ class exportObj.SquadBuilder
                                     gamemode = 's'
                     serialized_squad += "XY"
 
-                serialized_squad_intro = "v9Z" + gamemode + "Z20Z" # serialization v9, extended squad, 20 points
+                serialized_squad_intro = "v9Z" + gamemode + "Z25Z" # serialization v9, extended squad, 25 points
                 # serialization schema SHIPID:UPGRADEID,UPGRADEID,...,UPGRADEID:;SHIPID:UPGRADEID,...
 
                 serialized_squad = serialized_squad_intro + serialized_squad

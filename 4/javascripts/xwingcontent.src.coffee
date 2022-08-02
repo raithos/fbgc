@@ -754,7 +754,7 @@ exportObj.basicCardData = ->
         "Fang Fighter":
             name: "Fang Fighter"
             xws: "Fang Fighter".canonicalize()
-            factions: ["Scum and Villainy", "Rebel Alliance"]
+            factions: ["Galactic Empire", "Rebel Alliance"]
             attack: 3
             agility: 3
             hull: 4
@@ -4074,7 +4074,9 @@ exportObj.standardShipInclusions = [
     {name: 'A-Wing', faction: 'Rebel Alliance'}
     {name: 'Fang Fighter', faction: 'Rebel Alliance'}
     {name: 'Fang Fighter', faction: 'Galactic Empire'}
-    {name: 'Alpha-Class Star Wing', faction: 'Galactic Empire'}
+    {name: 'Gauntlet Fighter', faction: 'Galactic Empire'}
+    {name: 'VT-49 Decimator', faction: 'Galactic Empire'}    
+    
     
     
     
