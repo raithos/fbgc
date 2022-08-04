@@ -2836,6 +2836,9 @@ exportObj.standardShipInclusions = [
   }, {
     name: 'VT-49 Decimator',
     faction: 'Galactic Empire'
+  }, {
+    name: 'Alpha-Class Star Wing',
+    faction: 'Galactic Empire'
   }
 ];
 

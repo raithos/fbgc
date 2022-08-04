@@ -4076,7 +4076,7 @@ exportObj.standardShipInclusions = [
     {name: 'Fang Fighter', faction: 'Galactic Empire'}
     {name: 'Gauntlet Fighter', faction: 'Galactic Empire'}
     {name: 'VT-49 Decimator', faction: 'Galactic Empire'}    
-    
+    {name: 'Alpha-Class Star Wing', faction: 'Galactic Empire'}    
     
     
     
