@@ -2631,7 +2631,7 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Rebel Alliance"
             keyword: ["Mandalorian"]
-            ship: "RZ-1 A-wing"
+            ship: "A-wing"
             skill: 3
             points: 4
             loadout: 11
@@ -2665,7 +2665,7 @@ exportObj.basicCardData = ->
             id: 33
             unique: true
             faction: "Galactic Empire"
-            ship: "TIE/in Interceptor"
+            ship: "TIE Interceptor"
             skill: 6
             points: 5
             loadout: 10
@@ -2681,7 +2681,7 @@ exportObj.basicCardData = ->
             id: 34
             unique: true
             faction: "Galactic Empire"
-            ship: "TIE/sk Striker"
+            ship: "TIE Striker"
             skill: 5
             points: 5
             loadout: 15
