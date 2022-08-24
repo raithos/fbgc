@@ -2631,7 +2631,7 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Rebel Alliance"
             keyword: ["Mandalorian"]
-            ship: "A-wing"
+            ship: "A-Wing"
             skill: 3
             points: 4
             loadout: 11
