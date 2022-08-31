@@ -4509,9 +4509,6 @@ exportObj.cardLoaders.English = () ->
     exportObj.renameShip """TIE/Ba Interceptor""", """TIE/ba Interceptor"""
 
     pilot_translations =
-        "Jek Porkins":
-           display_name: """Jek Porkins"""
-           text: """After you receive a stress token, you may roll 1 attack die to remove it. On a %HIT% result, suffer 1 %HIT% damage."""
         "Iden Versio":
            display_name: """Iden Versio"""
            text: """Before a friendly TIE/ln fighter at range 0-1 would suffer 1 or more damage, you may spend 1 %CHARGE%. If you do, prevent that damage."""
@@ -4550,12 +4547,11 @@ exportObj.cardLoaders.English = () ->
         '"Zeb" Orrelios':
            display_name: """“Zeb” Orrelios"""
            text: """While you perform an attack at attack range 0, you may spend focus tokens for their default effect to modify results. While defending at attack range 0, the attacker may spend focus tokens for their default effect to modify results.%LINEBREAK%<i>Errata (since rules reference 1.4): Ability reworked</i>"""		   
-	    "Ciena Ree":
+	     "Ciena Ree":
            text: """After you perform an attack, if the defender was destroyed, gain 1 stress token. %LINEBREAK% After a friendly ship at range 0-3 is destroyed, remove 1 stress token. """	   
-		'"Duchess"':
+		  '"Duchess"':
            display_name: """“Duchess”"""
            text: """You may choose not to use your <strong>Adaptive Ailerons</strong>. %LINEBREAK%You may use your <strong>Adaptive Ailerons</strong> even while stressed."""   
-       
 	   
     upgrade_translations =
         "Servomotor S-Foils":
@@ -4842,7 +4838,6 @@ exportObj.cardLoaders.English = () ->
            text: '''INIT: 2 <br> %FRONTARC%: 2 %RANGEBONUS%, RANGE: 1-2 <br>%AGILITY%: 2, %HULL%: 2, %CHARGE%: 2 %LINEBREAK% <strong>Types:</strong> Device, Remote %LINEBREAK% After an enemy ship overlaps you, it gains 1 strain token.%LINEBREAK% <strong>Activation Phase:</strong> At the start of this phase, you may relocate forward using a [1 %TURNLEFT%], [2 %STRAIGHT%], or [1 %TURNRIGHT%] template.%LINEBREAK% <strong>Engagement Phase:</strong> You cannot attack if there are enemy ships at range 0. To perform an attack, you must spend 1 %CHARGE%. While you perform an attack, you may change 1 %FOCUS% result to a %HIT% result.'''
         '''Guarded''':
            text: '''While you defend, if you are not in the attacker's %BULLSEYEARC%, roll 1 additional defense die for each friendly calculating or evading <b>MagnaGuard Protector</b> in the attack arc.'''
-		   
 
     chassis_translations =
         "Vectored Thrusters":
